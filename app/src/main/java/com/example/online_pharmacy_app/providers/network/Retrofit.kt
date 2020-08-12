@@ -1,8 +1,8 @@
 package com.example.online_pharmacy_app.providers.network
 
 import android.annotation.SuppressLint
-import com.example.onlinestorereview.BuildConfig
-import com.example.onlinestorereview.common.utils.log
+import com.example.online_pharmacy_app.BuildConfig
+import com.example.online_pharmacy_app.common.log
 import com.ihsanbal.logging.Level.BODY
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient

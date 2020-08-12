@@ -9,6 +9,51 @@
     android:fitsSystemWindows="true"
     >
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:fitsSystemWindows="true"
+        tools:ignore="MissingConstraints">
+
+        <FrameLayout
+            android:id="@+id/toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </FrameLayout>
+
+
+<!--        <SearchView-->
+<!--            android:id="@+id/searchView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:queryHint="Search Here..."-->
+<!--            android:iconifiedByDefault="false"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            />-->
+
+        <androidx.appcompat.widget.SearchView
+            android:theme="@style/ThemeOverlay.SearchView"
+                android:id="@+id/searchView"
+                android:layout_margin="8dp"
+                app:searchIcon="@drawable/ic_baseline_search_24"
+                android:layout_width="match_parent"
+                app:closeIcon="@drawable/ic_baseline_close_24"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbackgrounds"
+                android:queryHint="Search..."
+                android:iconifiedByDefault="false"
+                android:layout_alignParentTop="true"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <FrameLayout
         android:id="@+id/container"
@@ -17,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

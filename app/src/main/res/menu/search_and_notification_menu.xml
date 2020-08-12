@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:icon="@drawable/ic_baseline_notifications_24"
         android:title="@string/search_hint"
         app:iconTint="@color/white"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/actionNotifications"
-        android:icon="@drawable/ic_baseline_shopping_basket_24"
+        android:icon="@drawable/ic_shopping_cart_image"
         android:menuCategory="secondary"
         android:orderInCategory="1"
         android:title="@string/cart"

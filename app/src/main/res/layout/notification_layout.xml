@@ -16,9 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
-        android:contentDescription="@string/notification_icon"
         android:gravity="center"
-        android:src="@drawable/ic_baseline_shopping_basket_24" />
+        android:src="@drawable/ic_shopping_cart_image" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/txtCount"
@@ -31,7 +30,7 @@
         android:gravity="center"
         android:minWidth="17sp"
         android:minHeight="15sp"
-        android:text="@string/_0"
+        android:text="0"
         android:textColor="#ffffffff"
         android:textSize="12sp"
         tools:ignore="RedundantNamespace" />

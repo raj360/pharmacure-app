@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_4"
-        android:background="@color/md_grey_50">
+       >
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -48,7 +48,6 @@
                             android:id="@+id/productImageViewCat"
                             android:layout_width="110dp"
                             android:layout_height="100dp"
-                            android:contentDescription="@string/image_default__image"
                             android:scaleType="fitXY"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -68,13 +67,12 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/text__primary"
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteY="8dp"
-                    tools:text="Product name" />
+                    tools:text="drug name" />
 
                 <TextView
                     android:id="@+id/productDetailsCat"
@@ -84,15 +82,15 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:ellipsize="end"
-                    android:maxLines="1"
+                    android:maxLines="2"
                     android:textAlignment="viewStart"
-                    android:textColor="@color/text__primary"
+                    android:textColor="#000000"
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
                     app:layout_constraintTop_toBottomOf="@+id/productPriceCat"
                     tools:ignore="MissingConstraints"
-                    tools:text="Product details" />
+                    tools:text="@string/sample_description" />
 
                 <TextView
                     android:id="@+id/productPriceCat"
@@ -102,12 +100,11 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:textAlignment="center"
-                    android:textColor="@color/text__primary"
+                    android:textColor="#000000"
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/price_currence"
                     app:layout_constraintTop_toBottomOf="@+id/productNameCat"
-                    tools:ignore="MissingConstraints"
                     tools:text="45000" />
 
                 <TextView
@@ -118,27 +115,11 @@
                     android:layout_marginTop="4dp"
                     android:text="@string/price_ugx"
                     android:textAlignment="viewEnd"
-                    android:textColor="@color/text__secondary"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
                     app:layout_constraintTop_toBottomOf="@+id/productNameCat" />
 
-                <RatingBar
-                    android:id="@+id/rateBar"
-                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:numStars="5"
-                    android:theme="@style/RatingBar"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/productDetailsCat"
-                    tools:ignore="MissingConstraints" />
 
                 <ImageButton
                     android:id="@+id/addToCartButton"
@@ -147,10 +128,10 @@
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="4dp"
                     android:backgroundTint="@color/white"
-                    android:tint="#FFC107"
+                    android:tint="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_action_name" />
+                    app:srcCompat="@drawable/ic_add_to_cart" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Online-Pharmacy-app</string>
+    <string name="app_name">Pharmacure</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -7,12 +7,28 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="orders">Orders</string>
     <string name="contact_us">Contact Us</string>
     <string name="account">Account</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_client_secret">GtFiMClVMa4T6UrI09IGsgMC</string>
+    <string name="web_client_key">AIzaSyA4TJA1qwtEsYvJ7nKrCeJJp44b2aeQ4vg</string>
+    <string name="create_account_using_google">Create account using Google</string>
+    <string name="verify_phone_number">Verify Phone Number</string>
+    <string name="_787292442">787292442</string>
+    <string name="cart">Cart</string>
+    <string name="order_with_prescription">Order with prescription</string>
+    <string name="view_all">view all</string>
+    <string name="price_ugx">Ugx</string>
+    <string name="item_product_price">85000</string>
+    <string name="sample_description">This is the product detail summary which describes a particular medicine</string>
+    <string name="profile__edit">Edit</string>
+    <string name="sign_out">Sign out</string>
+    <string name="other_drugs">Other drugs</string>
 </resources>

@@ -1,9 +1,9 @@
-package com.example.online_pharmacy_app.activities.auth
+package com.example.online_pharmacy_app.activities
 
-import com.example.onlinestorereview.result.SResult
-import com.example.onlinestorereview.viewobject.Cart
+import com.example.online_pharmacy_app.result.SResult
+import com.example.online_pharmacy_app.viewobjects.Customer
+
 
 interface OnCustomerSignInResultListeners {
-
-    fun handleCartResult(result: SResult<List<Cart>>)
+    fun handleSignInResult(result: SResult<Customer>)
 }

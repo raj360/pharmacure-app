@@ -1,6 +1,7 @@
 package com.example.online_pharmacy_app.result
 
-import com.example.onlinestorereview.viewobject.base.IConvertibleTo
+import com.example.online_pharmacy_app.viewobjects.base.IConvertibleTo
+
 
 sealed class SResult<out T : Any> {
     class Success<out T : Any>(val data: T) : SResult<T>()
