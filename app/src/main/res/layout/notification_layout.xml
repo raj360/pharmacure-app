@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@android:style/Widget.ActionButton"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/hotlist_bell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:contentDescription="@string/notification_icon"
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_shopping_basket_24" />
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/txtCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/round_shape"
+        android:gravity="center"
+        android:minWidth="17sp"
+        android:minHeight="15sp"
+        android:text="@string/_0"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        tools:ignore="RedundantNamespace" />
+</RelativeLayout>
