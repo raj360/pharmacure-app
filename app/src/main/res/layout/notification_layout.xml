@@ -11,6 +11,7 @@
     android:orientation="vertical"
     android:focusable="true">
 
+
     <ImageView
         android:id="@+id/hotlist_bell"
         android:layout_width="wrap_content"

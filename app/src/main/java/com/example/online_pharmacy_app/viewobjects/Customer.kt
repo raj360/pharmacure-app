@@ -14,7 +14,7 @@ data class Customer(
     val token: String?,
     val dateOfBirth: String?
 ):IConvertibleTo<Customer>{
-    override fun convertTo(): Customer  =
+    override fun convertTo()=
         Customer(
             this.customerID,
             this.fullName,

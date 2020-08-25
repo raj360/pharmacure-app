@@ -22,8 +22,7 @@ class CustomerRemoteDataSource(private val customerApi: ICustomerApi) : ICustome
         token: String,
         date: String
     ): SResult<Customer> =
-        when (val result =
-            customerApi.registerCustomer(fullName, telephone, email, token, date).awaitResult()) {
+        when (val result = customerApi.registerCustomer(fullName, telephone, email, token, date).awaitResult()) {
             is Result.Ok -> {
                 successResult(result.value)
             }

@@ -322,10 +322,18 @@
                        app:layout_constraintStart_toStartOf="parent"
                        app:layout_constraintTop_toBottomOf="@+id/viewAll">
 
-                       <androidx.recyclerview.widget.RecyclerView
-                           android:id="@+id/recyclerViewDrugsHome"
+                       <com.faltenreich.skeletonlayout.SkeletonLayout
+                           android:id="@+id/skeletonHome"
                            android:layout_width="match_parent"
-                           android:layout_height="match_parent"/>
+                           android:layout_height="wrap_content"
+                           tools:ignore="MissingConstraints">
+                           <androidx.recyclerview.widget.RecyclerView
+                               android:id="@+id/recyclerViewDrugsHome"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"/>
+                       </com.faltenreich.skeletonlayout.SkeletonLayout>
+
+
 
                    </androidx.constraintlayout.widget.ConstraintLayout>
 

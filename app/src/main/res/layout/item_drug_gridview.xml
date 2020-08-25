@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/product_image"
+                android:id="@+id/drug_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
@@ -63,14 +63,14 @@
             android:text="@string/price_ugx"
             android:textAlignment="viewStart"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="@id/productPrice"
+            app:layout_constraintEnd_toEndOf="@id/drugPrice"
             app:layout_constraintTop_toBottomOf="@+id/drugDescription"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="@string/price_ugx" />
 
 
         <TextView
-            android:id="@+id/productPrice"
+            android:id="@+id/drugPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
