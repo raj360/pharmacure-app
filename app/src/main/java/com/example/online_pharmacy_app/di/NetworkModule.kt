@@ -1,6 +1,7 @@
 package com.example.online_pharmacy_app.di
 
 import com.example.online_pharmacy_app.common.SERVER_URL
+import com.example.online_pharmacy_app.providers.network.api.ICartApi
 import com.example.online_pharmacy_app.providers.network.api.ICustomerApi
 import com.example.online_pharmacy_app.providers.network.api.IDrugApi
 import com.example.online_pharmacy_app.providers.network.createOkHttpClient
@@ -27,6 +28,13 @@ val networkModule = Kodein.Module("network_module") {
     bind<IDrugApi>() with singleton {
         createWebServiceApi<IDrugApi>(
             instance(), instance(TAG_SERVER_URL)
+        )
+    }
+
+    bind<ICartApi>() with singleton {
+        createWebServiceApi<ICartApi>(
+            instance(),
+            instance(TAG_SERVER_URL)
         )
     }
 

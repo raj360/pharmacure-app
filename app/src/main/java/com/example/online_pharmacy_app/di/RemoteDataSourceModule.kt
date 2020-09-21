@@ -1,10 +1,7 @@
 package com.example.online_pharmacy_app.di
 
 
-import com.example.online_pharmacy_app.datasource.remote.CustomerRemoteDataSource
-import com.example.online_pharmacy_app.datasource.remote.DrugRemoteDataSource
-import com.example.online_pharmacy_app.datasource.remote.ICustomerRemoteDataSource
-import com.example.online_pharmacy_app.datasource.remote.IDrugRemoteDataSource
+import com.example.online_pharmacy_app.datasource.remote.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -18,6 +15,7 @@ val remoteDataSourceModule = Kodein.Module("remote_data_source_module"){
     bind<IDrugRemoteDataSource>() with singleton { DrugRemoteDataSource(instance()) }
     bind() from singleton { DrugRemoteDataSource(instance()) }
 
-
+    bind<ICartRemoteDataSource>() with singleton { CartRemoteDataSource(instance()) }
+    bind() from singleton { CartRemoteDataSource(instance())}
 
 }

@@ -11,10 +11,6 @@ import com.example.online_pharmacy_app.activities.base.contact.ContactsFragment
 
 class OrdersFragment : Fragment(R.layout.fragment_orders) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     companion object {
         fun newInstance(): OrdersFragment = OrdersFragment()
     }

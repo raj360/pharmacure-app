@@ -19,13 +19,11 @@ class DrugsViewHolder(parent:ViewGroup) :SmartViewHolder<Drug>(
         itemView.drugPrice.text= item.unitPrice.toString()
         itemView.drugDescription.text=item.description
 
-        log { "Image url ${item.getDrugImageUrl()}" }
 
         Glide.with(itemView.drug_image)
             .load(item.getDrugImageUrl())
             .into(itemView.drug_image)
     }
-
 
     override fun unbind() {
         super.unbind()

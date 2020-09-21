@@ -250,16 +250,22 @@
                         android:layout_marginBottom="4dp"
                         android:text="@string/other_drugs"
                         android:textAppearance="@style/categories"
-                        app:layout_constraintBottom_toTopOf="@+id/preference_list"
+                        app:layout_constraintBottom_toTopOf="@+id/skeletonAccounts"
                         app:layout_constraintStart_toStartOf="parent" />
 
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/preference_list"
+                    <com.faltenreich.skeletonlayout.SkeletonLayout
+                        android:id="@+id/skeletonAccounts"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
                         android:layout_marginTop="@dimen/space_32"
+                        tools:ignore="MissingConstraints">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewOtherDrugLists"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="@dimen/space_4"
                         android:layout_marginEnd="2dp"
                         android:clipToPadding="false"
                         android:paddingBottom="@dimen/space_16"
@@ -267,6 +273,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         tools:layout_editor_absoluteY="32dp" />
+                    </com.faltenreich.skeletonlayout.SkeletonLayout>
 
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>

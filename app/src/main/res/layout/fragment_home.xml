@@ -48,12 +48,12 @@
 
                        <TextView
                            android:id="@+id/order_with_"
-                           android:layout_width="183dp"
-                           android:layout_height="21dp"
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
                            android:layout_alignParentTop="true"
                            android:layout_marginStart="8dp"
-                           android:layout_marginTop="24dp"
-                           android:layout_marginBottom="24dp"
+                           android:layout_marginTop="8dp"
+                           android:layout_marginBottom="8dp"
                            android:gravity="center_horizontal|top"
                            android:text="@string/order_with_prescription"
                            android:textAppearance="@style/order_with_"
@@ -66,9 +66,9 @@
                            android:id="@+id/button"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:layout_marginTop="16dp"
+                           android:layout_marginTop="8dp"
                            android:layout_marginEnd="8dp"
-                           android:layout_marginBottom="16dp"
+                           android:layout_marginBottom="8dp"
                            android:background="@drawable/buttonbackground"
                            android:text="Upload"
                            android:textColor="@color/white"
@@ -86,9 +86,8 @@
                    android:layout_width="0dp"
                    android:layout_height="wrap_content"
                    android:layout_marginStart="8dp"
-                   android:layout_marginTop="16dp"
+                   android:layout_marginTop="8dp"
                    android:layout_marginEnd="8dp"
-                   android:layout_marginBottom="8dp"
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toBottomOf="@+id/cardOne">
@@ -122,19 +121,19 @@
 
                        <androidx.constraintlayout.widget.ConstraintLayout
                            android:layout_width="match_parent"
-                           android:layout_height="200dp">
+                           android:layout_height="180dp">
 
 
                            <ImageButton
-                               android:backgroundTint="#FFFFFF"
-                               android:id="@+id/imageButton"
+                               android:id="@+id/supplementsButton"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginTop="8dp"
                                android:layout_marginBottom="2dp"
+                               android:backgroundTint="#FFFFFF"
                                android:src="@drawable/ic_suplements"
                                app:layout_constraintBottom_toTopOf="@+id/textView2"
-                               app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                               app:layout_constraintEnd_toStartOf="@+id/herbalImageButton"
                                app:layout_constraintHorizontal_bias="0.5"
                                app:layout_constraintStart_toStartOf="parent"
                                app:layout_constraintTop_toTopOf="parent" />
@@ -150,17 +149,17 @@
                                app:layout_constraintEnd_toStartOf="@+id/textView4"
                                app:layout_constraintHorizontal_bias="0.5"
                                app:layout_constraintStart_toStartOf="parent"
-                               app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                               app:layout_constraintTop_toBottomOf="@+id/supplementsButton" />
 
                            <ImageButton
-                               android:backgroundTint="#FFFFFF"
-                               android:id="@+id/imageButton2"
+                               android:id="@+id/otpImageButton"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginBottom="2dp"
+                               android:backgroundTint="#FFFFFF"
                                android:src="@drawable/ic_otp_medicine"
                                app:layout_constraintBottom_toTopOf="@+id/textView3"
-                               app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+                               app:layout_constraintEnd_toStartOf="@+id/prescreptionOnlyImageButton"
                                app:layout_constraintHorizontal_bias="0.5"
                                app:layout_constraintStart_toStartOf="parent" />
 
@@ -178,17 +177,17 @@
                                app:layout_constraintStart_toStartOf="parent" />
 
                            <ImageButton
-                               android:backgroundTint="#FFFFFF"
-                               android:id="@+id/imageButton3"
+                               android:id="@+id/herbalImageButton"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginTop="8dp"
                                android:layout_marginBottom="2dp"
+                               android:backgroundTint="#FFFFFF"
                                android:src="@drawable/ic_herbario"
                                app:layout_constraintBottom_toTopOf="@+id/textView4"
-                               app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                               app:layout_constraintEnd_toStartOf="@+id/cosmeticsImageButton"
                                app:layout_constraintHorizontal_bias="0.5"
-                               app:layout_constraintStart_toEndOf="@+id/imageButton"
+                               app:layout_constraintStart_toEndOf="@+id/supplementsButton"
                                app:layout_constraintTop_toTopOf="parent" />
 
                            <TextView
@@ -202,20 +201,20 @@
                                app:layout_constraintEnd_toStartOf="@+id/textView5"
                                app:layout_constraintHorizontal_bias="0.5"
                                app:layout_constraintStart_toEndOf="@+id/textView2"
-                               app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+                               app:layout_constraintTop_toBottomOf="@+id/herbalImageButton" />
 
                            <ImageButton
-                               android:backgroundTint="#FFFFFF"
-                               android:id="@+id/imageButton4"
+                               android:id="@+id/cosmeticsImageButton"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginTop="8dp"
                                android:layout_marginBottom="2dp"
+                               android:backgroundTint="#FFFFFF"
                                android:src="@drawable/ic_productos_cosmeticos"
                                app:layout_constraintBottom_toTopOf="@+id/textView5"
                                app:layout_constraintEnd_toEndOf="parent"
                                app:layout_constraintHorizontal_bias="0.5"
-                               app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                               app:layout_constraintStart_toEndOf="@+id/herbalImageButton"
                                app:layout_constraintTop_toTopOf="parent" />
 
                            <TextView
@@ -229,20 +228,20 @@
                                app:layout_constraintEnd_toEndOf="parent"
                                app:layout_constraintHorizontal_bias="0.5"
                                app:layout_constraintStart_toEndOf="@+id/textView4"
-                               app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+                               app:layout_constraintTop_toBottomOf="@+id/cosmeticsImageButton" />
 
                            <ImageButton
-                               android:backgroundTint="#FFFFFF"
-                               android:id="@+id/imageButton5"
+                               android:id="@+id/prescreptionOnlyImageButton"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginBottom="2dp"
+                               android:backgroundTint="#FFFFFF"
                                android:src="@drawable/ic_prescription_medicine"
                                android:textAlignment="center"
                                app:layout_constraintBottom_toTopOf="@+id/textView6"
-                               app:layout_constraintEnd_toStartOf="@+id/imageButton6"
+                               app:layout_constraintEnd_toStartOf="@+id/nationalDrugRegisterImageButton"
                                app:layout_constraintHorizontal_bias="0.5"
-                               app:layout_constraintStart_toEndOf="@+id/imageButton2" />
+                               app:layout_constraintStart_toEndOf="@+id/otpImageButton" />
 
                            <TextView
                                android:id="@+id/textView6"
@@ -257,16 +256,16 @@
                                app:layout_constraintStart_toEndOf="@+id/textView3" />
 
                            <ImageButton
-                               android:backgroundTint="#FFFFFF"
-                               android:id="@+id/imageButton6"
+                               android:id="@+id/nationalDrugRegisterImageButton"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginBottom="2dp"
+                               android:backgroundTint="#FFFFFF"
                                android:src="@drawable/ic_natinal_registra"
                                app:layout_constraintBottom_toTopOf="@+id/textView7"
                                app:layout_constraintEnd_toEndOf="parent"
                                app:layout_constraintHorizontal_bias="0.5"
-                               app:layout_constraintStart_toEndOf="@+id/imageButton5" />
+                               app:layout_constraintStart_toEndOf="@+id/prescreptionOnlyImageButton" />
 
                            <TextView
                                android:id="@+id/textView7"
@@ -295,8 +294,9 @@
                    android:layout_height="match_parent"
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@+id/layout_categories"
-                   >
+                   app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                   app:layout_constraintTop_toBottomOf="@+id/layout_categories">
+
                    <TextView
                        android:id="@+id/viewAll"
                        android:layout_width="wrap_content"
@@ -339,10 +339,6 @@
 
 
                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 
            </androidx.constraintlayout.widget.ConstraintLayout>

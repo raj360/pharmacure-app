@@ -22,21 +22,23 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.auth.PhoneVerificationActivity"/>
-        <activity android:name=".activities.auth.GoogleSignInActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:theme="@style/AppTheme.NoActionBar" android:name=".activities.DrugDetailsActivity"/>
+        <activity
+            android:name=".activities.categories.CategorySwitcherActivity"
+            android:label="@string/title_activity_category_switcher"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activities.auth.PhoneVerificationActivity" />
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activities.auth.GoogleSignInActivity" />
         <activity
             android:name=".activities.base.BaseBottomNavigationActivity"
-            android:label="@string/app_name"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

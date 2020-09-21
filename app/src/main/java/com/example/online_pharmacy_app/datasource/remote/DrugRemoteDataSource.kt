@@ -24,5 +24,34 @@ class DrugRemoteDataSource(private var drugApi: IDrugApi) : IDrugRemoteDataSourc
             }
         }
 
+    override suspend fun getDrugFromInventoryByID(drugID: Int)=
+        when (val drugs = drugApi.getDrugsFromInventoryByID(drugID).awaitResult()) {
+            is Result.Ok -> {
+                successResult(drugs.value)
+            }
+            is Result.Error -> {
+                errorResult(drugs.response.code, drugs.exception.message())
+            }
+            is Result.Exception -> {
+                emptyResult()
+            }
+        }
+
+
+    override suspend fun getDrugFromInventoryFromInventory(
+        categoryID: Int,
+        subCategoryID: Int
+    ): SResult<List<Drug>>  =  when (val drugs = drugApi.getDrugsFromInventoryByCategory(categoryID,subCategoryID).awaitResult()) {
+        is Result.Ok -> {
+            successResult(drugs.value)
+        }
+        is Result.Error -> {
+            errorResult(drugs.response.code, drugs.exception.message())
+        }
+        is Result.Exception -> {
+            emptyResult()
+        }
+    }
+
 
 }

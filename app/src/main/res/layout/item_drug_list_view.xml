@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/productImageViewCat"
+                            android:id="@+id/drugImageViewCat"
                             android:layout_width="110dp"
                             android:layout_height="100dp"
                             android:scaleType="fitXY"
@@ -59,7 +58,7 @@
 
 
                 <TextView
-                    android:id="@+id/productNameCat"
+                    android:id="@+id/drugNameCat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -75,7 +74,7 @@
                     tools:text="drug name" />
 
                 <TextView
-                    android:id="@+id/productDetailsCat"
+                    android:id="@+id/drugDetailsCat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -88,12 +87,12 @@
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/productPriceCat"
+                    app:layout_constraintTop_toBottomOf="@+id/drugPriceCat"
                     tools:ignore="MissingConstraints"
                     tools:text="@string/sample_description" />
 
                 <TextView
-                    android:id="@+id/productPriceCat"
+                    android:id="@+id/drugPriceCat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -104,7 +103,7 @@
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/price_currence"
-                    app:layout_constraintTop_toBottomOf="@+id/productNameCat"
+                    app:layout_constraintTop_toBottomOf="@+id/drugNameCat"
                     tools:text="45000" />
 
                 <TextView
@@ -118,7 +117,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/font_body_size"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/productNameCat" />
+                    app:layout_constraintTop_toBottomOf="@+id/drugNameCat" />
 
 
                 <ImageButton
