@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.online_pharmacy_app.R
 import com.example.online_pharmacy_app.activities.categories.ui.main.SectionsPagerAdapter
 import com.example.online_pharmacy_app.common.CATEGORY
+import kotlinx.android.synthetic.main.activity_category_switcher.*
 
 
 class CategorySwitcherActivity : AppCompatActivity() {
@@ -22,6 +23,9 @@ class CategorySwitcherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_switcher)
+        setSupportActionBar(toolbarCategorySwitcher)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         val categoryID = intent.getIntExtra(CATEGORY, 0)
 

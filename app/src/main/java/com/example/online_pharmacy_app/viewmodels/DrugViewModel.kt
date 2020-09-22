@@ -1,6 +1,7 @@
 package com.example.online_pharmacy_app.viewmodels
 
 import androidx.lifecycle.*
+import com.example.online_pharmacy_app.activities.OnSearchDrugListener
 import com.example.online_pharmacy_app.activities.categories.ui.main.OnDrugByCategoryResult
 import com.example.online_pharmacy_app.di.repositoryModule
 import com.example.online_pharmacy_app.domain.repository.DrugRepository
@@ -15,6 +16,7 @@ class DrugViewModel(private val drugRepository: DrugRepository) : ViewModel() {
 
     private var _drugID: MutableLiveData<Int> = MutableLiveData()
     var onDrugsByCategoryResult: OnDrugByCategoryResult? = null
+    var onSearchDrugListener:OnSearchDrugListener? = null
 
     private val remoteDrugListLiveData: LiveData<SResult<List<Drug>>> by lazy {
         liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
@@ -47,5 +49,14 @@ class DrugViewModel(private val drugRepository: DrugRepository) : ViewModel() {
 
     fun getRemoteDrugByID() = remoteDrugLiveData
 
+
+
+//    fun searchDrug(searchText:String) =
+//        viewModelScope.launch {
+//            drugRepository.searchProduct(searchText).let {
+//                loading()
+//                onSearchDrugListener?.searchProductResult(it)
+//            }
+//        }
 
 }

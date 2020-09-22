@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
@@ -13,14 +12,15 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
         android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
         tools:ignore="MissingConstraints">
 
         <FrameLayout
             android:id="@+id/toolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -30,28 +30,27 @@
         </FrameLayout>
 
 
-<!--        <SearchView-->
-<!--            android:id="@+id/searchView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:queryHint="Search Here..."-->
-<!--            android:iconifiedByDefault="false"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            />-->
+        <!--        <SearchView-->
+        <!--            android:id="@+id/searchView"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:queryHint="Search Here..."-->
+        <!--            android:iconifiedByDefault="false"-->
+        <!--            android:layout_alignParentTop="true"-->
+        <!--            />-->
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:background="@drawable/textbackgrounds"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search..."
             android:theme="@style/ThemeOverlay.SearchView"
-                android:id="@+id/searchView"
-                android:layout_margin="8dp"
-                app:searchIcon="@drawable/ic_baseline_search_24"
-                android:layout_width="match_parent"
-                app:closeIcon="@drawable/ic_baseline_close_24"
-                android:layout_height="wrap_content"
-                android:background="@drawable/textbackgrounds"
-                android:queryHint="Search..."
-                android:iconifiedByDefault="false"
-                android:layout_alignParentTop="true"/>
-
+            app:closeIcon="@drawable/ic_baseline_close_24"
+            app:searchIcon="@drawable/ic_baseline_search_24" />
     </com.google.android.material.appbar.AppBarLayout>
 
 

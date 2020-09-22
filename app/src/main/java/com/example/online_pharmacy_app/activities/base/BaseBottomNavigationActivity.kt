@@ -8,12 +8,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.online_pharmacy_app.R
 import com.example.online_pharmacy_app.activities.OnCartChangeResultListeners
 import com.example.online_pharmacy_app.activities.OnUpdateCartListener
+import com.example.online_pharmacy_app.activities.SearchesFragment
 import com.example.online_pharmacy_app.activities.auth.GoogleSignInActivity
 import com.example.online_pharmacy_app.activities.base.account.AccountsFragment
 import com.example.online_pharmacy_app.activities.base.contact.ContactsFragment
@@ -29,7 +31,6 @@ import com.example.online_pharmacy_app.viewobjects.Cart
 import com.example.online_pharmacy_app.viewobjects.Customer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base_bottom_navigation.*
-import kotlinx.android.synthetic.main.item_drug_cart.*
 import org.imaginativeworld.oopsnointernet.ConnectionCallback
 import org.imaginativeworld.oopsnointernet.NoInternetDialog
 import org.kodein.di.Kodein
@@ -37,24 +38,39 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
 
-class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListeners,OnUpdateCartListener,KodeinAware {
 
-    private  var txtViewCount: TextView? = null
+class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultListeners,
+    OnUpdateCartListener, KodeinAware, SearchView.OnQueryTextListener {
+
+    private var txtViewCount: TextView? = null
+
     private lateinit var cartViewModal: CartViewModal
 
     lateinit var homeFragment: HomeFragment
+
     lateinit var accountsFragment: AccountsFragment
+
     lateinit var ordersFragment: OrdersFragment
+
     lateinit var contactsFragment: ContactsFragment
+
     private var noInternetDialog: NoInternetDialog? = null
+
     override val kodein: Kodein by closestKodein()
-   lateinit var cartViewFragment:CartViewFragment
+
+    lateinit var cartViewFragment: CartViewFragment
+
     private lateinit var customerViewModel: CustomerViewModel
+
     private val factory: ViewModelFactory by instance()
+
     val TELEPHONE_SCHEMA = "tel:"
     val PRESERVED_CHARACTER = "+"
     val HK_COUNTRY_CODE = "256"
-    val HK_OBSERVATORY_PHONE_NUMBER = "787292442"
+    val HK_OBSERVATORY_PHONE_NUMBER = "700000000"
+    private val ARG_QUERY = "ARG_QUERY"
+    private var searchQuery: String? = null
+    lateinit var searchesFragment: SearchesFragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +79,7 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
         setSupportActionBar(toolbar)
         bottomBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-       //Initialization of viewmodals
+        //Initialization of viewmodals
         customerViewModel = ViewModelProvider(this, factory).get(CustomerViewModel::class.java)
         cartViewModal = ViewModelProvider(this, factory).get(CartViewModal::class.java)
         homeFragment = HomeFragment()
@@ -71,18 +87,33 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
         ordersFragment = OrdersFragment()
         contactsFragment = ContactsFragment()
         cartViewFragment = CartViewFragment()
+        searchesFragment = SearchesFragment()
 
         customerViewModel.customerDetails.observe(this, Observer(::handleCustomerDetails))
         //Initialization of viewmodal listeners
-        cartViewModal.onCartChangeResultList=this
-        cartViewModal.onCartChangeResultList=this
+        cartViewModal.onCartChangeResultList = this
+        cartViewModal.onCartChangeResultList = this
         homeFragment.updateCartListener = this
         cartViewFragment.updateCartListener = this
+        searchesFragment.updateCartListener=this
+
 
         openFragment(homeFragment)
 
-    }
+        searchView.setOnQueryTextListener(this)
 
+
+        searchView.setOnSearchClickListener {
+          openFragment(searchesFragment)
+        }
+
+        searchView.setOnCloseListener{
+            openFragment(homeFragment)
+            true
+        }
+
+
+    }
 
 
     private val mOnNavigationItemSelectedListener =
@@ -105,21 +136,22 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
                     return@OnNavigationItemSelectedListener true
                 }
 
-                R.id.navigation_call-> {
-                    val phoneCallUri = Uri.parse(TELEPHONE_SCHEMA + PRESERVED_CHARACTER + HK_COUNTRY_CODE + HK_OBSERVATORY_PHONE_NUMBER)
-                    val phoneCallIntent = Intent(Intent.ACTION_DIAL).also{
+                R.id.navigation_call -> {
+                    val phoneCallUri =
+                        Uri.parse(TELEPHONE_SCHEMA + PRESERVED_CHARACTER + HK_COUNTRY_CODE + HK_OBSERVATORY_PHONE_NUMBER)
+                    val phoneCallIntent = Intent(Intent.ACTION_DIAL).also {
                         it.data = phoneCallUri
                     }
                     startActivity(phoneCallIntent)
 
-                    return@OnNavigationItemSelectedListener  true
+                    return@OnNavigationItemSelectedListener true
                 }
             }
             false
         }
 
 
-    private fun openFragment(fragment: Fragment)  =
+    private fun openFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.container, fragment)
             addToBackStack(null)
@@ -137,16 +169,13 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
 
         txtViewCount?.setOnClickListener {
             openFragment(cartViewFragment)
-//            replaceFragment(R.id.fl_bottom_nav,cartViewFragment)
         }
 
         notification.setOnClickListener {
             openFragment(cartViewFragment)
-//            replaceFragment(R.id.fl_bottom_nav,cartViewFragment)
         }
         return true
     }
-
 
 
     override fun onResume() {
@@ -160,7 +189,8 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
                 }
                 cancelable = true // Optional
                 noInternetConnectionTitle = "No Internet" // Optional
-                noInternetConnectionMessage = "Check your Internet connection and try again." // Optional
+                noInternetConnectionMessage =
+                    "Check your Internet connection and try again." // Optional
                 showInternetOnButtons = true // Optional
                 pleaseTurnOnText = "Please turn on" // Optional
                 wifiOnButtonText = "Wifi" // Optional
@@ -183,7 +213,7 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
     override fun handleCartResult(result: SResult<List<Cart>>) {
         when (result) {
             is SResult.Loading -> log { "Loading..." }
-            is SResult.Success -> updateHotCount(result.data.map {it.quantity }.sum())
+            is SResult.Success -> updateHotCount(result.data.map { it.quantity }.sum())
             is SResult.Error -> log { "Some error occurred" }
             is SResult.Empty -> log { "Empty result ..." }
         }
@@ -194,8 +224,8 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
             is SResult.Loading -> log { "Loading..." }
             is SResult.Success -> {
                 log { result.data.toString() }
-                homeFragment.customerId =result.data.customerID
-                cartViewFragment.customerId=result.data.customerID
+                homeFragment.customerId = result.data.customerID
+                cartViewFragment.customerId = result.data.customerID
                 cartViewModal.setCustomerId(result.data.customerID)
                 cartViewModal.getCartData()
 
@@ -215,7 +245,35 @@ class BaseBottomNavigationActivity : AppCompatActivity(),OnCartChangeResultListe
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(ARG_QUERY, searchQuery)
+    }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        searchQuery = savedInstanceState.getString(ARG_QUERY)
+        searchQuery?.let { search(it) }
+    }
+
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        this.searchQuery = newText
+        this.searchQuery?.let { search(it) }
+
+        return true
+    }
+
+
+    private fun search(query: String) {
+        query.isNotEmpty().also {
+//            if(it) drugViewModel.searchDrug(newText!!)
+        }
+    }
 
 
 }
