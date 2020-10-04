@@ -3,12 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.base.order.OrdersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="invisible"
+            android:id="@+id/cardViewStickerOutOfOrders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/drugImageViewCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/out_of_order"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <com.faltenreich.skeletonlayout.SkeletonLayout
+        android:id="@+id/skeletonHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerOrdersPage"
+            android:layout_width="match_parent"
+            android:layout_height="713dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginEnd="2dp"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/space_16"
+            tools:layout_editor_absoluteY="32dp" />
+    </com.faltenreich.skeletonlayout.SkeletonLayout>
+
 
 </FrameLayout>

@@ -3,9 +3,11 @@ package com.example.online_pharmacy_app.activities.base
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -22,10 +24,13 @@ import com.example.online_pharmacy_app.activities.base.contact.ContactsFragment
 import com.example.online_pharmacy_app.activities.base.home.HomeFragment
 import com.example.online_pharmacy_app.activities.base.order.OrdersFragment
 import com.example.online_pharmacy_app.activities.fragments.CartViewFragment
+import com.example.online_pharmacy_app.common.FRAG_TO_OPEN
+import com.example.online_pharmacy_app.common.OPEN_CART_FRAGS
 import com.example.online_pharmacy_app.common.log
 import com.example.online_pharmacy_app.result.SResult
 import com.example.online_pharmacy_app.viewmodels.CartViewModal
 import com.example.online_pharmacy_app.viewmodels.CustomerViewModel
+import com.example.online_pharmacy_app.viewmodels.DrugViewModel
 import com.example.online_pharmacy_app.viewmodels.factory.ViewModelFactory
 import com.example.online_pharmacy_app.viewobjects.Cart
 import com.example.online_pharmacy_app.viewobjects.Customer
@@ -44,6 +49,8 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
 
     private var txtViewCount: TextView? = null
 
+    private var progressBarCart: ProgressBar? = null
+
     private lateinit var cartViewModal: CartViewModal
 
     lateinit var homeFragment: HomeFragment
@@ -51,6 +58,9 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
     lateinit var accountsFragment: AccountsFragment
 
     lateinit var ordersFragment: OrdersFragment
+
+    lateinit var drugViewModel: DrugViewModel
+
 
     lateinit var contactsFragment: ContactsFragment
 
@@ -67,10 +77,11 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
     val TELEPHONE_SCHEMA = "tel:"
     val PRESERVED_CHARACTER = "+"
     val HK_COUNTRY_CODE = "256"
-    val HK_OBSERVATORY_PHONE_NUMBER = "700000000"
+    val HK_OBSERVATORY_PHONE_NUMBER = "787292442"
     private val ARG_QUERY = "ARG_QUERY"
     private var searchQuery: String? = null
     lateinit var searchesFragment: SearchesFragment
+    private var openFragment: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,6 +91,7 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
         bottomBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         //Initialization of viewmodals
+        drugViewModel = ViewModelProvider(this, factory).get(DrugViewModel::class.java)
         customerViewModel = ViewModelProvider(this, factory).get(CustomerViewModel::class.java)
         cartViewModal = ViewModelProvider(this, factory).get(CartViewModal::class.java)
         homeFragment = HomeFragment()
@@ -94,25 +106,58 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
         cartViewModal.onCartChangeResultList = this
         cartViewModal.onCartChangeResultList = this
         homeFragment.updateCartListener = this
+        searchesFragment.cartViewModal = cartViewModal
         cartViewFragment.updateCartListener = this
-        searchesFragment.updateCartListener=this
+        searchesFragment.updateCartListener = this
+        searchesFragment.drugViewModel = drugViewModel
 
 
-        openFragment(homeFragment)
+
+        this.openFragment = intent.getStringExtra(FRAG_TO_OPEN)
+
+        log { "Testing open fragment => $openFragment" }
+
+        showProgressBar()
+
+
+        Handler().postDelayed({
+                if(openFragment == FRAG_TO_OPEN || openFragment== null)  {
+                    hideProgressBar()
+                    openFragment(homeFragment)
+                }
+
+                 if(openFragment == OPEN_CART_FRAGS)  {
+                    hideProgressBar()
+                    openFragment(cartViewFragment)
+                }
+
+        }, 2000)
+
 
         searchView.setOnQueryTextListener(this)
 
 
         searchView.setOnSearchClickListener {
-          openFragment(searchesFragment)
+            openFragment(searchesFragment)
+
         }
 
-        searchView.setOnCloseListener{
-            openFragment(homeFragment)
+        searchView.setOnCloseListener {
+            Intent(this, BaseBottomNavigationActivity::class.java).also {
+                startActivity(it)
+            }
             true
         }
 
 
+    }
+
+    private fun showProgressBar() {
+        baseActivityProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        baseActivityProgressBar.visibility = View.INVISIBLE
     }
 
 
@@ -124,15 +169,15 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_orders -> {
-                    openFragment(OrdersFragment.newInstance())
+                    openFragment(ordersFragment)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_contact -> {
-                    openFragment(ContactsFragment.newInstance())
+                    openFragment(contactsFragment)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_account -> {
-                    openFragment(AccountsFragment.newInstance())
+                    openFragment(accountsFragment)
                     return@OnNavigationItemSelectedListener true
                 }
 
@@ -155,7 +200,7 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.container, fragment)
             addToBackStack(null)
-            commit()
+            commitAllowingStateLoss();
         }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -166,6 +211,11 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
         val notification: View = menu.findItem(R.id.actionNotifications).actionView
 
         txtViewCount = notification.findViewById(R.id.txtCount) as TextView
+
+        progressBarCart = notification.findViewById(R.id.progressBarCart) as ProgressBar
+
+        cartViewFragment.progressBarCart = progressBarCart
+        homeFragment.progressBarCart = progressBarCart
 
         txtViewCount?.setOnClickListener {
             openFragment(cartViewFragment)
@@ -224,11 +274,11 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
             is SResult.Loading -> log { "Loading..." }
             is SResult.Success -> {
                 log { result.data.toString() }
+                searchesFragment.customerId=result.data.customerID
                 homeFragment.customerId = result.data.customerID
                 cartViewFragment.customerId = result.data.customerID
                 cartViewModal.setCustomerId(result.data.customerID)
                 cartViewModal.getCartData()
-
             }
             is SResult.Error -> startActivity(Intent(this, GoogleSignInActivity::class.java))
             is SResult.Empty -> startActivity(Intent(this, GoogleSignInActivity::class.java))
@@ -246,8 +296,8 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
         outState.putString(ARG_QUERY, searchQuery)
+        super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -269,10 +319,10 @@ class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultList
     }
 
 
+
+
     private fun search(query: String) {
-        query.isNotEmpty().also {
-//            if(it) drugViewModel.searchDrug(newText!!)
-        }
+        query.isNotEmpty().also { if(it) drugViewModel.searchDrug(query) }
     }
 
 

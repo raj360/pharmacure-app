@@ -22,7 +22,22 @@ class CustomerRemoteDataSource(private val customerApi: ICustomerApi) : ICustome
         token: String,
         date: String
     ): SResult<Customer> =
-        when (val result = customerApi.registerCustomer(fullName, telephone, email, token, date).awaitResult()) {
+        when (val result =
+            customerApi.registerCustomer(fullName, telephone, email, token, date).awaitResult()) {
+            is Result.Ok -> {
+                successResult(result.value)
+            }
+            is Result.Error -> {
+                errorResult(result.response.code, result.exception.message())
+            }
+            is Result.Exception -> {
+                emptyResult()
+            }
+        }
+
+
+    override suspend fun customerDetails(email: String) =
+        when (val result = customerApi.getCustomerDetails(email).awaitResult()) {
             is Result.Ok -> {
                 successResult(result.value)
             }

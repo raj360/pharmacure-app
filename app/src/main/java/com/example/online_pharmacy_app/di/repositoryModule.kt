@@ -11,8 +11,8 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-val repositoryModule = Kodein.Module("repository_module"){
-    bind() from singleton { CustomerRepository(instance(),instance()) }
+val repositoryModule = Kodein.Module("repository_module") {
+    bind() from singleton { CustomerRepository(instance(), instance()) }
     bind() from singleton { DrugRepository(instance()) }
     bind() from singleton { CartRepository(instance()) }
     bind() from provider { CartViewModal(instance()) }

@@ -12,6 +12,7 @@ import com.example.online_pharmacy_app.activities.ItemListListners.OnAddToCartCa
 import com.example.online_pharmacy_app.activities.OnCartChangeResultListeners
 import com.example.online_pharmacy_app.activities.viewholders.DrugByCategoryResultViewHolder
 import com.example.online_pharmacy_app.common.CATEGORY
+import com.example.online_pharmacy_app.common.CUSTOMER_ID
 import com.example.online_pharmacy_app.common.log
 import com.example.online_pharmacy_app.common.startLoginActivity
 import com.example.online_pharmacy_app.result.SResult
@@ -22,7 +23,9 @@ import com.example.online_pharmacy_app.viewobjects.Cart
 import com.example.online_pharmacy_app.viewobjects.Drug
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_category_switcher.*
+import kotlinx.android.synthetic.main.fragment_contacts.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -46,7 +49,6 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
     private val factory: ViewModelFactory by instance()
 
     private lateinit var skeleton: Skeleton
-    var customerId: Int? = null
     var QUANTITY = 1
 
 
@@ -59,19 +61,25 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
 
         }
 
-        drugViewModel = ViewModelProvider(this, factory).get(DrugViewModel::class.java).apply {
-            getDrugsByCategoryList(arguments?.getInt(CATEGORY)!!,pageViewModel.getIndex()!!)
-        }
 
-        cartViewModal = ViewModelProvider(this,factory).get(CartViewModal::class.java)
-        cartViewModal.onCartChangeResultList =this
+        drugViewModel = ViewModelProvider(this, factory).get(DrugViewModel::class.java)
+        drugViewModel.onDrugsByCategoryResult = this
+        drugViewModel.getDrugsByCategoryList(
+            arguments?.getInt(CATEGORY)!!,
+            pageViewModel.getIndex()!!
+        )
+
+
+        cartViewModal = ViewModelProvider(this, factory).get(CartViewModal::class.java)
+        cartViewModal.onCartChangeResultList = this
     }
 
 
     private fun initializeSkeleton() {
-      drugByCategoryResultsRecyclerView.layoutManager = LinearLayoutManager(context)
+        drugByCategoryResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         skeleton = skeletonSearchResults
-        skeleton = drugByCategoryResultsRecyclerView.applySkeleton(R.layout.item_drug_list_small_view, 8)
+        skeleton =
+            drugByCategoryResultsRecyclerView.applySkeleton(R.layout.item_drug_list_small_view, 8)
         skeleton.showSkeleton()
     }
 
@@ -79,7 +87,7 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
         super.onViewCreated(view, savedInstanceState)
         initializeSkeleton()
         pageViewModel.text.observe(viewLifecycleOwner, Observer<String> {
-
+            initializeSkeleton()
         })
 
     }
@@ -96,11 +104,13 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
          * number and the current category ID that has been selected
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int, categoryID: Int): PlaceholderFragment {
+        fun newInstance(sectionNumber: Int, categoryID: Int, customerID: Int): PlaceholderFragment {
             return PlaceholderFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                     putInt(CATEGORY, categoryID)
+                    putInt(CUSTOMER_ID, customerID)
+
                 }
             }
         }
@@ -110,6 +120,12 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
         when (result) {
             is SResult.Loading -> skeleton.showSkeleton()
             is SResult.Success -> {
+
+                result.data.isEmpty().let {
+                    if (it) showStickerCategoryNotFound()
+                    else hideStickerCategoryNotFound()
+                }
+
                 skeleton.showOriginal()
                 SmartRecyclerAdapter
                     .items(result.data)
@@ -120,12 +136,17 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
                             viewEventId: ViewEventId,
                             position: Position
                         ) {
-                            customerId.let { customer ->
+
+                            arguments?.getInt(CUSTOMER_ID, 0).let { customer ->
                                 if (customer != null) {
-                                    cartViewModal.setAddToCart(QUANTITY, customerId!!, result.data[position].drugID,result.data[position].unitPrice)
-                                        .also {
-                                            cartViewModal.addToCart()
-                                        }
+                                    cartViewModal.setAddToCart(
+                                        QUANTITY,
+                                        customer,
+                                        result.data[position].drugID,
+                                        result.data[position].unitPrice
+                                    ).also {
+                                        cartViewModal.addToCart()
+                                    }
                                 } else {
                                     context?.startLoginActivity()
                                 }
@@ -133,22 +154,45 @@ class PlaceholderFragment : Fragment(R.layout.fragment_category_switcher),
                             }
                         }
 
-                    })
-                    .into<SmartRecyclerAdapter>(drugByCategoryResultsRecyclerView)
+                    }).into<SmartRecyclerAdapter>(drugByCategoryResultsRecyclerView)
             }
-            is SResult.Error ->  skeleton.showSkeleton()
-            is SResult.Empty -> skeleton.showSkeleton()
+            is SResult.Error -> {
+                showSnackBack("Error occurred ${result.message}")
+                skeleton.showOriginal()
+            }
+            is SResult.Empty -> {
+                showSnackBack("No response from server")
+                skeleton.showOriginal()
+            }
         }
+    }
+
+    private fun hideStickerCategoryNotFound() {
+        constraintLayoutCategoryNotFound.visibility =View.INVISIBLE
+    }
+
+    private fun showStickerCategoryNotFound() {
+        constraintLayoutCategoryNotFound.visibility =View.VISIBLE
     }
 
     override fun handleCartResult(result: SResult<List<Cart>>) {
         when (result) {
             is SResult.Loading -> log { "Loading..." }
-            is SResult.Success -> Toast.makeText(requireContext(),"Cart updated :${result.data.map { it.quantity }.sum()} items",Toast.LENGTH_SHORT).show()
-            is SResult.Error -> log { "Some error occurred" }
-            is SResult.Empty -> log { "Empty result ..." }
+            is SResult.Success -> Toast.makeText(
+                requireContext(),
+                "Cart updated :${result.data.map { it.quantity }.sum()} items",
+                Toast.LENGTH_SHORT
+            ).show()
+            is SResult.Error -> showSnackBack("error occurred ${result.message}")
+            is SResult.Empty -> showSnackBack("No response from sever ")
         }
     }
+
+
+    fun showSnackBack(message:String){
+       Snackbar.make(constraintLayout, message, Snackbar.LENGTH_SHORT).apply { show() }
+    }
+
 
 
 }

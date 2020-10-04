@@ -13,8 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/space_4"
-            app:cardCornerRadius="@dimen/space_4"
             android:elevation="@dimen/space_4"
+            app:cardCornerRadius="@dimen/space_4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/categoryDrugName"
+                    android:id="@+id/catDrugName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -72,7 +72,7 @@
 
 
                 <TextView
-                    android:id="@+id/categoryDrugPrice"
+                    android:id="@+id/cateDrugPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -83,10 +83,10 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/font_body_size"
-                    app:layout_constraintBottom_toTopOf="@+id/categoryDrugDescription"
-                    app:layout_constraintEnd_toStartOf="@+id/drugCategoryTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/catDrugDescription"
+                    app:layout_constraintEnd_toStartOf="@+id/catDrugCategory"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/categoryDrugName" />
+                    app:layout_constraintTop_toBottomOf="@+id/catDrugName" />
 
                 <ImageButton
                     android:id="@+id/addToCartButton"
@@ -101,20 +101,20 @@
                     app:srcCompat="@drawable/ic_add_to_cart" />
 
                 <TextView
-                    android:id="@+id/drugCategoryTextView"
+                    android:id="@+id/catDrugCategory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
-                    android:textSize="@dimen/font_body_size"
                     android:maxLines="1"
                     android:text="@string/categories"
+                    android:textSize="@dimen/font_body_size"
                     app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
-                    app:layout_constraintStart_toEndOf="@+id/categoryDrugPrice"
-                    app:layout_constraintTop_toBottomOf="@+id/categoryDrugName" />
+                    app:layout_constraintStart_toEndOf="@+id/cateDrugPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/catDrugName" />
 
                 <TextView
-                    android:id="@+id/categoryDrugDescription"
+                    android:id="@+id/catDrugDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -125,7 +125,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/drugCategoryTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/catDrugCategory" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

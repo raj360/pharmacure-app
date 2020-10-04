@@ -31,8 +31,6 @@ interface ICartRemoteDataSource {
     ): SResult<List<Cart>>
 
 
-
-
 //    suspend fun makeOrder(
 //        customerId: Int,
 //        cartIds: IntArray,

@@ -8,7 +8,7 @@ import com.example.online_pharmacy_app.viewobjects.Cart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CartRepository(private val cartRemoteDataSource: CartRemoteDataSource){
+class CartRepository(private val cartRemoteDataSource: CartRemoteDataSource) {
 
     suspend fun getRemoteCartList(customerID: Int): SResult<List<Cart>> =
         withContext(Dispatchers.IO) {

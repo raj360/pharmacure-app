@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import com.example.online_pharmacy_app.R
 
 
-
 class ContactsFragment : Fragment(R.layout.fragment_contacts) {
 
     companion object {

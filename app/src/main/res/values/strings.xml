@@ -38,7 +38,6 @@
     <string name="pay_on_delivery">Pay on delivery</string>
     <string name="get_store_location">Get store location</string>
     <string name="location">Location</string>
-    <string name="_0">0</string>
     <string name="total_amount">Total amount</string>
     <string name="sale_price">sale cost</string>
     <string name="delivery_cost">Delivery cost</string>
@@ -66,9 +65,12 @@
     <string name="contact_form_button">Send Message</string>
 
 
-    <string name="contact_form_post_message">Please wait! We\'re sending your message to the support department...</string>
+    <string name="contact_form_post_message">Please wait! We\'re sending your message to the support department…</string>
 
 
     <string name="contact_posted">Your message has been successfully delivered.</string>
     <string name="call_to_order">Call To Order</string>
+    <string name="view_cart">View Cart</string>
+    <string name="_0">0</string>
+    <string name="resent_orders">Resent Orders</string>
 </resources>

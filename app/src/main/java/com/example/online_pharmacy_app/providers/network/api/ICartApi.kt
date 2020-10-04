@@ -35,7 +35,7 @@ interface ICartApi {
     ): Call<List<Cart>>
 
 
-  @GET("drug/delete-one-from-cart/{cartID}/{customerID}")
+    @GET("drug/delete-one-from-cart/{cartID}/{customerID}")
     fun clearCart(
         @Path("customerID") customerID: Int
     ): Call<List<Cart>>

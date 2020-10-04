@@ -9,6 +9,7 @@ interface IDrugApi {
 
     @GET("drug/get-from-inventory")
     fun getDrugsFromInventory(): Call<List<Drug>>
+
     @GET("drug/get-from-inventory-by-id/{drugID}")
     fun getDrugsFromInventoryByID(@Path("drugID") drugID: Int): Call<Drug>
 
@@ -17,6 +18,11 @@ interface IDrugApi {
         @Path("categoryID") categoryID: Int,
         @Path("subCategoryID") subCategoryID: Int
     ): Call<List<Drug>>
+
+    @GET("drug/{searchQuery}")
+    fun searchDrug(
+        @Path("searchQuery") searchQuery:String
+    ):Call<List<Drug>>
 
 //    @Multipart
 //    @POST("drug/upload-prescription")

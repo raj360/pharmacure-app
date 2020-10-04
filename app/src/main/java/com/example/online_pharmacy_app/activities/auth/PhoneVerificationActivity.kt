@@ -1,4 +1,5 @@
 package com.example.online_pharmacy_app.activities.auth
+
 import android.os.Bundle
 import android.util.Log
 import android.view.View

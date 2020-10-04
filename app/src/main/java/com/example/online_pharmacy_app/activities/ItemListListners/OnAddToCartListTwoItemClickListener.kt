@@ -5,7 +5,7 @@ import smartadapter.SmartViewHolderType
 import smartadapter.ViewId
 import smartadapter.listener.OnItemClickListener
 
-interface OnAddToCartListTwoItemClickListener:OnItemClickListener {
+interface OnAddToCartListTwoItemClickListener : OnItemClickListener {
     override val viewHolderType: SmartViewHolderType
 //        get() = ProductsByCategoryViewHolder::class
 

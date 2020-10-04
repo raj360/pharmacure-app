@@ -9,7 +9,6 @@
     tools:context=".activities.auth.PhoneVerificationActivity">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutEntries"
         android:layout_width="wrap_content"
@@ -122,7 +121,6 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutEntries" />
 
     <Button
-        android:visibility="gone"
         android:id="@+id/sendCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -132,6 +130,7 @@
         android:background="@drawable/buttonbackground"
         android:text="Send Code"
         android:textColor="#FFFFFF"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/verifyPhoneNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -149,15 +148,11 @@
         android:visibility="gone"
         app:cornerRadius="10dp"
         app:fieldBgColor="#ddd"
-        app:noOfFields="6"
         app:layout_constraintBottom_toTopOf="@+id/sendCode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutEntries"
-        />
-
-
-
+        app:noOfFields="6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

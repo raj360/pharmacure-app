@@ -22,17 +22,20 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:theme="@style/AppTheme.NoActionBar" android:name=".activities.DrugDetailsActivity"/>
+        <activity
+            android:name=".activities.DrugDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.categories.CategorySwitcherActivity"
             android:label="@string/title_activity_category_switcher"
+            android:parentActivityName=".activities.base.BaseBottomNavigationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".activities.auth.PhoneVerificationActivity" />
+            android:name=".activities.auth.PhoneVerificationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".activities.auth.GoogleSignInActivity" />
+            android:name=".activities.auth.GoogleSignInActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.base.BaseBottomNavigationActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

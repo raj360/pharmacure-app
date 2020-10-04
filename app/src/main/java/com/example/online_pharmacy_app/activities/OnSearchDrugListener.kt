@@ -4,5 +4,5 @@ import com.example.online_pharmacy_app.result.SResult
 import com.example.online_pharmacy_app.viewobjects.Drug
 
 interface OnSearchDrugListener {
-    fun searchProductResult(result: SResult<List<Drug>>)
+    fun searchDrugResult(result: SResult<List<Drug>>)
 }

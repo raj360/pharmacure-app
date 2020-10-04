@@ -7,7 +7,7 @@ import smartadapter.SmartViewHolderType
 import smartadapter.ViewId
 import smartadapter.listener.OnItemClickListener
 
-interface OnDrugImageClickListener:OnItemClickListener {
+interface OnDrugImageClickListener : OnItemClickListener {
     override val viewHolderType: SmartViewHolderType
         get() = DrugsViewHolder::class
 

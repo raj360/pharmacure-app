@@ -102,12 +102,12 @@
                     app:layout_constraintBottom_toTopOf="@+id/increaseQuantityButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/product_price"
+                    app:layout_constraintTop_toBottomOf="@+id/drug_price"
                     tools:ignore="MissingConstraints"
                     tools:text="Product details" />
 
                 <TextView
-                    android:id="@+id/product_price"
+                    android:id="@+id/drug_price"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -136,7 +136,7 @@
                     android:textAlignment="viewEnd"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/font_body_size"
-                    app:layout_constraintEnd_toStartOf="@+id/product_price"
+                    app:layout_constraintEnd_toStartOf="@+id/drug_price"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
                     app:layout_constraintTop_toBottomOf="@+id/categoryDrugName"
@@ -150,7 +150,7 @@
                     android:layout_marginBottom="4dp"
                     android:backgroundTint="#FFFFFF"
                     android:tint="@color/colorPrimary"
-                    app:layout_constraintBottom_toTopOf="@+id/product_price"
+                    app:layout_constraintBottom_toTopOf="@+id/drug_price"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_baseline_remove_shopping_cart_24" />

@@ -13,6 +13,7 @@ sealed class SResult<out T : Any> {
 
 inline fun <reified T : Any> successResult(data: T) =
     SResult.Success(data)
+
 fun loading() = SResult.Loading
 fun emptyResult() = SResult.Empty
 fun errorResult(code: Int, message: String) =

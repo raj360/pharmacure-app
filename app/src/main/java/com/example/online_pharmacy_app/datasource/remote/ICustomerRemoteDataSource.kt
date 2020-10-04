@@ -11,4 +11,8 @@ interface ICustomerRemoteDataSource {
         token: String,
         date: String
     ): SResult<Customer>
+
+    suspend fun customerDetails(
+        email: String
+    ): SResult<Customer>
 }

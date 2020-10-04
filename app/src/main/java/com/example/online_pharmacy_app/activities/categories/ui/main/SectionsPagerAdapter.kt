@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.online_pharmacy_app.R
-import com.example.online_pharmacy_app.activities.categories.CategorySwitcherActivity
 
- val TAB_TITLES = arrayOf(
+val TAB_TITLES = arrayOf(
     "Gastro intestinal system",
     "Cardiovascular system",
     "Respiratory system",
@@ -31,21 +29,19 @@ import com.example.online_pharmacy_app.activities.categories.CategorySwitcherAct
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentStatePagerAdapter(fm) {
 
-    var categoryID:Int = 0
+    var categoryID: Int = 0
+    var customerID: Int = 0
 
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1,categoryID)
+        return PlaceholderFragment.newInstance(position + 1, categoryID,customerID)
     }
 
     override fun getPageTitle(position: Int) = TAB_TITLES[position]
 
 
-    override fun getCount()= TAB_TITLES.size
-
-
-
+    override fun getCount() = TAB_TITLES.size
 
 
 }

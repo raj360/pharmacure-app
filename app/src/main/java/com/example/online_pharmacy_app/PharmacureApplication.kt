@@ -12,10 +12,11 @@ import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton
 
-class PharmacureApplication:Application() , KodeinAware {
+class PharmacureApplication : Application(), KodeinAware {
     /**
      * this is dependence injection using kodein this
-     * enable us to prevent dependencies against objects
+     * allows for separation of concerns and avoids instantiation
+     * of objects from classes which reduces dependence
      */
     override val kodein: Kodein by Kodein.lazy {
         bind() from singleton { ViewModelFactory(applicationContext) }
@@ -39,9 +40,9 @@ class PharmacureApplication:Application() , KodeinAware {
 
     }
 
-        override fun onCreate() {
-            super.onCreate()
-            FirebaseApp.initializeApp(this)
-        }
+    override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
     }
+}
 

@@ -1,11 +1,9 @@
 package com.example.online_pharmacy_app.activities.base.account
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +11,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.online_pharmacy_app.R
 import com.example.online_pharmacy_app.activities.auth.GoogleSignInActivity
+import com.example.online_pharmacy_app.common.FRAG_TO_OPEN
 import com.example.online_pharmacy_app.common.log
+import com.example.online_pharmacy_app.common.startHomeActivity
 import com.example.online_pharmacy_app.databinding.FragmentAccountsBinding
 import com.example.online_pharmacy_app.result.SResult
 import com.example.online_pharmacy_app.viewmodels.CustomerViewModel
@@ -45,6 +45,13 @@ class AccountsFragment : Fragment(R.layout.fragment_accounts), KodeinAware {
             Observer(::handleCustomerDetails)
         )
 
+
+        binding.signOutTextView.setOnClickListener {
+            customerViewModel.signOut().also {
+                requireContext().startHomeActivity(FRAG_TO_OPEN)
+            }
+        }
+
     }
 
     companion object {
@@ -67,12 +74,13 @@ class AccountsFragment : Fragment(R.layout.fragment_accounts), KodeinAware {
 
             }
             is SResult.Error -> {
-                startActivity(Intent(context, GoogleSignInActivity::class.java))}
-            is SResult.Empty ->{
+                startActivity(Intent(context, GoogleSignInActivity::class.java))
+            }
+            is SResult.Empty -> {
                 binding.customerNameTextView.text = "You don't have an account Yet!!!"
-                binding.phoneTextView.visibility=View.GONE
+                binding.phoneTextView.visibility = View.GONE
                 binding.emailTextView.visibility = View.GONE
-                binding.editProfileTextView.visibility=View.INVISIBLE
+                binding.editProfileTextView.visibility = View.INVISIBLE
                 binding.signOutTextView.visibility = View.INVISIBLE
                 startActivity(Intent(context, GoogleSignInActivity::class.java))
             }
@@ -82,7 +90,8 @@ class AccountsFragment : Fragment(R.layout.fragment_accounts), KodeinAware {
     private fun initializeSkeleton() {
         binding.recyclerviewOtherDrugLists.layoutManager = LinearLayoutManager(context)
         skeleton = binding.skeletonAccounts
-        skeleton = binding.recyclerviewOtherDrugLists.applySkeleton(R.layout.item_drug_list_small_view, 8)
+        skeleton =
+            binding.recyclerviewOtherDrugLists.applySkeleton(R.layout.item_drug_list_small_view, 8)
         skeleton.showSkeleton()
 
     }

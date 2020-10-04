@@ -23,13 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            app:tabGravity="start"
             app:tabContentStart="0dp"
-           app:tabTextColor="@color/white"
-            app:tabMinWidth="@dimen/space_16"
+            app:tabGravity="start"
             app:tabIndicatorColor="@color/white"
+            app:tabMinWidth="@dimen/space_16"
             app:tabMode="scrollable"
-            />
+            app:tabTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

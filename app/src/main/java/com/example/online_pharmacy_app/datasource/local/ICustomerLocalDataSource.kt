@@ -9,4 +9,6 @@ interface ICustomerLocalDataSource {
     suspend fun getAll(): LiveData<SResult<Customer>>
 
     suspend fun insert(data: Customer)
+
+    suspend fun signOut()
 }

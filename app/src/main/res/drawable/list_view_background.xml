@@ -1,72 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="347dp"
     android:height="291dp"
     android:viewportWidth="347"
-    android:viewportHeight="291"
-    >
+    android:viewportHeight="291">
 
     <group>
 
-        <clip-path
-            android:pathData="M0 0H347V291H0V0Z"
-            />
+        <clip-path android:pathData="M0 0H347V291H0V0Z" />
 
         <group
-            android:translateX="1"
-            android:translateY="0"
             android:pivotX="173.5"
             android:pivotY="145.5"
+            android:rotation="90"
             android:scaleX="2"
             android:scaleY="2"
-            android:rotation="90"
-            >
+            android:translateX="1"
+            android:translateY="0">
 
-            <path
-                android:pathData="M0 0V291H347V0"
-                >
+            <path android:pathData="M0 0V291H347V0">
 
                 <aapt:attr name="android:fillColor">
 
                     <gradient
-                        android:type="linear"
-                        android:startX="86.75"
-                        android:startY="145.5"
                         android:endX="260.25"
                         android:endY="145.5"
-                        >
+                        android:startX="86.75"
+                        android:startY="145.5"
+                        android:type="linear">
 
                         <item
                             android:color="#4000E8E1"
-                            android:offset="0"
-                            />
+                            android:offset="0" />
 
                         <item
                             android:color="#3800E8E1"
-                            android:offset="0.125"
-                            />
+                            android:offset="0.125" />
 
                         <item
                             android:color="#2E00E8E1"
-                            android:offset="0.271"
-                            />
+                            android:offset="0.271" />
 
                         <item
                             android:color="#2800E8E1"
-                            android:offset="0.37"
-                            />
+                            android:offset="0.37" />
 
                         <item
                             android:color="#2100E3E8"
-                            android:offset="0.484"
-                            />
+                            android:offset="0.484" />
 
                         <item
                             android:color="#0000E8E1"
-                            android:offset="1"
-                            />
+                            android:offset="1" />
 
                     </gradient>
 

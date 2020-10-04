@@ -7,6 +7,6 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-val databaseModule = Kodein.Module("database_module"){
+val databaseModule = Kodein.Module("database_module") {
     bind<ICustomerDao>() with provider { instance<PharmacureDatabase>().getAllCustomerDao() }
 }

@@ -4,288 +4,295 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CartViewFragment">
-    <com.faltenreich.skeletonlayout.SkeletonLayout
-        android:id="@+id/skeletonCartList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    tools:context=".activities.base.BaseBottomNavigationActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layer_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/card2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+      android:id="@+id/nestedScrollViewCartView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <com.faltenreich.skeletonlayout.SkeletonLayout
+          android:id="@+id/skeletonCartList"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/allCartItemsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+              <androidx.constraintlayout.widget.ConstraintLayout
+                  android:id="@+id/layer_1"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintBottom_toTopOf="@+id/card2"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
 
+                  <androidx.recyclerview.widget.RecyclerView
+                      android:id="@+id/allCartItemsRecyclerView"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:overScrollMode="never"
+                      app:layout_constraintBottom_toBottomOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/white"
-            app:cardCornerRadius="@dimen/space_8"
-            app:cardElevation="@dimen/space_8"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layer_1">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
+              </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layer_amount_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@+id/view18"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+              <com.google.android.material.card.MaterialCardView
+                  android:id="@+id/card2"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="8dp"
+                  android:layout_marginTop="8dp"
+                  android:layout_marginEnd="8dp"
+                  android:layout_marginBottom="8dp"
+                  android:background="@color/white"
+                  app:cardCornerRadius="@dimen/space_8"
+                  app:cardElevation="@dimen/space_8"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/layer_1">
 
-                    <TextView
-                        android:id="@+id/order_total_amount"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/text__primary_dark"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/amount_label3"
-                        tools:text="@string/_0" />
-
-                    <TextView
-                        android:id="@+id/amount_label2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/delivery_cost"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/text__primary_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/delivery_cost"
-                        app:layout_constraintEnd_toStartOf="@+id/amount_label3"
-                        app:layout_constraintStart_toEndOf="@+id/amount_label"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/amount_label3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/total_amount"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/text__primary_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/cart_total_amount"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/text__primary_dark"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/amount_label"
-                        android:text="@string/_0" />
+                  <androidx.constraintlayout.widget.ConstraintLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:background="@color/white">
 
 
-                    <TextView
-                        android:id="@+id/amount_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/sale_price"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/text__primary_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/cart_total_amount"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                      <androidx.constraintlayout.widget.ConstraintLayout
+                          android:id="@+id/layer_amount_details"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:background="@color/white"
+                          android:orientation="horizontal"
+                          app:layout_constraintBottom_toTopOf="@+id/view18"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/amount_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/price_ugx"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
-                        app:layout_constraintEnd_toStartOf="@+id/order_total_amount"
-                        app:layout_constraintStart_toStartOf="@+id/amount_label3"
-                        app:layout_constraintTop_toBottomOf="@+id/amount_label3" />
+                          <TextView
+                              android:id="@+id/order_total_amount"
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/text__primary_dark"
+                              android:textSize="18sp"
+                              app:layout_constraintEnd_toEndOf="parent"
+                              app:layout_constraintTop_toBottomOf="@+id/amount_label3"
+                              tools:text="@string/_0" />
 
-                    <TextView
-                        android:id="@+id/delivery_cost"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/text__primary_dark"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
-                        app:layout_constraintEnd_toEndOf="@+id/amount_label2"
-                        app:layout_constraintStart_toStartOf="@+id/amount_label2"
-                        app:layout_constraintTop_toBottomOf="@+id/amount_label2"
-                        android:text="@string/_0" />
+                          <TextView
+                              android:id="@+id/amount_label2"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:text="@string/delivery_cost"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/text__primary_dark"
+                              android:textSize="14sp"
+                              android:textStyle="bold"
+                              app:layout_constraintBottom_toTopOf="@+id/delivery_cost"
+                              app:layout_constraintEnd_toStartOf="@+id/amount_label3"
+                              app:layout_constraintStart_toEndOf="@+id/amount_label"
+                              app:layout_constraintTop_toTopOf="parent" />
 
-                    <RadioGroup
-                        android:id="@+id/paymentMethodRadioGroup"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/delivery_cost">
+                          <TextView
+                              android:id="@+id/amount_label3"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:text="@string/total_amount"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/text__primary_dark"
+                              android:textSize="14sp"
+                              android:textStyle="bold"
+                              app:layout_constraintEnd_toEndOf="parent"
+                              app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp"
-                            android:text="@string/choose_payment_method"
-                            android:textAlignment="viewStart"
-                            android:textColor="@color/text__primary_dark"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.496"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-
-                        <RadioButton
-                            android:id="@+id/mobileMoneyRadioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:checked="true"
-                            android:text="@string/pay_using_mobile_money" />
+                          <TextView
+                              android:id="@+id/cart_total_amount"
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:text="@string/_0"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/text__primary_dark"
+                              android:textSize="18sp"
+                              app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
+                              app:layout_constraintStart_toStartOf="parent"
+                              app:layout_constraintTop_toBottomOf="@+id/amount_label" />
 
 
-                        <RadioButton
-                            android:id="@+id/onDeliveryRadioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pay_on_delivery" />
+                          <TextView
+                              android:id="@+id/amount_label"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:text="@string/sale_price"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/text__primary_dark"
+                              android:textSize="14sp"
+                              android:textStyle="bold"
+                              app:layout_constraintBottom_toTopOf="@+id/cart_total_amount"
+                              app:layout_constraintStart_toStartOf="parent"
+                              app:layout_constraintTop_toTopOf="parent" />
+
+                          <TextView
+                              android:id="@+id/amount_price"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:text="@string/price_ugx"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/colorPrimary"
+                              android:textSize="18sp"
+                              app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
+                              app:layout_constraintEnd_toStartOf="@+id/order_total_amount"
+                              app:layout_constraintStart_toStartOf="@+id/amount_label3"
+                              app:layout_constraintTop_toBottomOf="@+id/amount_label3" />
+
+                          <TextView
+                              android:id="@+id/delivery_cost"
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:padding="5dp"
+                              android:text="@string/_0"
+                              android:textAlignment="viewStart"
+                              android:textColor="@color/text__primary_dark"
+                              android:textSize="18sp"
+                              app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
+                              app:layout_constraintEnd_toEndOf="@+id/amount_label2"
+                              app:layout_constraintStart_toStartOf="@+id/amount_label2"
+                              app:layout_constraintTop_toBottomOf="@+id/amount_label2" />
+
+                          <RadioGroup
+                              android:id="@+id/paymentMethodRadioGroup"
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              app:layout_constraintEnd_toEndOf="parent"
+                              app:layout_constraintStart_toStartOf="parent"
+                              app:layout_constraintTop_toBottomOf="@+id/delivery_cost">
+
+                              <TextView
+                                  android:id="@+id/textView2"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:text="@string/choose_payment_method"
+                                  android:textAlignment="viewStart"
+                                  android:textColor="@color/text__primary_dark"
+                                  android:textSize="15sp"
+                                  android:textStyle="bold"
+                                  app:layout_constraintEnd_toEndOf="parent"
+                                  app:layout_constraintHorizontal_bias="0.496"
+                                  app:layout_constraintStart_toStartOf="parent" />
 
 
-                        <RadioButton
-                            android:visibility="gone"
-                            android:id="@+id/defaultRadioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/get_store_location" />
-                    </RadioGroup>
-
-                    <EditText
-                        android:id="@+id/editTextLocation"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="@string/location"
-                        android:inputType="textPersonName"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/paymentMethodRadioGroup" />
-
-                    <TextView
-                        android:id="@+id/textViewADD"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+"
-                        android:textSize="@dimen/space_20"
-                        app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
-                        app:layout_constraintEnd_toStartOf="@+id/delivery_cost"
-                        app:layout_constraintStart_toEndOf="@+id/cart_total_amount" />
-
-                    <TextView
-                        android:id="@+id/textViewEQUAL"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="="
-                        android:textSize="@dimen/space_20"
-                        app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
-                        app:layout_constraintEnd_toStartOf="@+id/amount_price"
-                        app:layout_constraintStart_toEndOf="@+id/delivery_cost" />
+                              <RadioButton
+                                  android:id="@+id/mobileMoneyRadioButton"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:checked="true"
+                                  android:text="@string/pay_using_mobile_money" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                              <RadioButton
+                                  android:id="@+id/onDeliveryRadioButton"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:text="@string/pay_on_delivery" />
 
 
-                <View
-                    android:id="@+id/view18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lighter"
-                    app:layout_constraintBottom_toTopOf="@+id/orderNowButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layer_amount_details" />
+                              <RadioButton
+                                  android:id="@+id/defaultRadioButton"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:text="@string/get_store_location"
+                                  android:visibility="gone" />
+                          </RadioGroup>
 
-                <Button
-                    android:id="@+id/orderNowButton"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="@dimen/space_4"
-                    android:layout_marginEnd="@dimen/space_8"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="@string/order_now"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/exitCartButton"
-                    app:layout_constraintTop_toBottomOf="@+id/view18" />
+                          <EditText
+                              android:id="@+id/editTextLocation"
+                              android:layout_width="150dp"
+                              android:layout_height="wrap_content"
+                              android:ems="10"
+                              android:hint="@string/location"
+                              android:inputType="textPersonName"
+                              app:layout_constraintStart_toStartOf="parent"
+                              app:layout_constraintTop_toBottomOf="@+id/paymentMethodRadioGroup" />
 
-                <Button
-                    android:id="@+id/exitCartButton"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="@dimen/space_8"
-                    android:layout_marginEnd="@dimen/space_4"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/exit"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/orderNowButton"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view18" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.faltenreich.skeletonlayout.SkeletonLayout>
+                          <TextView
+                              android:id="@+id/textViewADD"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="+"
+                              android:textSize="@dimen/space_20"
+                              app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
+                              app:layout_constraintEnd_toStartOf="@+id/delivery_cost"
+                              app:layout_constraintStart_toEndOf="@+id/cart_total_amount" />
+
+                          <TextView
+                              android:id="@+id/textViewEQUAL"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="="
+                              android:textSize="@dimen/space_20"
+                              app:layout_constraintBottom_toTopOf="@+id/paymentMethodRadioGroup"
+                              app:layout_constraintEnd_toStartOf="@+id/amount_price"
+                              app:layout_constraintStart_toEndOf="@+id/delivery_cost" />
+
+
+                      </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                      <View
+                          android:id="@+id/view18"
+                          android:layout_width="wrap_content"
+                          android:layout_height="1dp"
+                          android:background="@color/grey_lighter"
+                          app:layout_constraintBottom_toTopOf="@+id/orderNowButton"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintHorizontal_bias="0.5"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toBottomOf="@+id/layer_amount_details" />
+
+                      <Button
+                          android:id="@+id/orderNowButton"
+                          android:layout_width="0dp"
+                          android:layout_height="45dp"
+                          android:layout_marginStart="@dimen/space_4"
+                          android:layout_marginEnd="@dimen/space_8"
+                          android:backgroundTint="@color/colorPrimary"
+                          android:text="@string/order_now"
+                          android:textColor="@color/white"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintHorizontal_bias="0.5"
+                          app:layout_constraintStart_toEndOf="@+id/exitCartButton"
+                          app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+                      <Button
+                          android:id="@+id/exitCartButton"
+                          android:layout_width="0dp"
+                          android:layout_height="45dp"
+                          android:layout_marginStart="@dimen/space_8"
+                          android:layout_marginEnd="@dimen/space_4"
+                          android:backgroundTint="@color/white"
+                          android:text="@string/exit"
+                          android:textColor="@color/colorPrimary"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          app:layout_constraintEnd_toStartOf="@+id/orderNowButton"
+                          app:layout_constraintHorizontal_bias="0.5"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toBottomOf="@+id/view18" />
+                  </androidx.constraintlayout.widget.ConstraintLayout>
+              </com.google.android.material.card.MaterialCardView>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+      </com.faltenreich.skeletonlayout.SkeletonLayout>
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.core.widget.NestedScrollView>

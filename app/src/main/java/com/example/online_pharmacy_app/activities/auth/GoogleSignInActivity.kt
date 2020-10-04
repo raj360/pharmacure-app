@@ -1,10 +1,18 @@
 package com.example.online_pharmacy_app.activities.auth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.online_pharmacy_app.R
+import com.example.online_pharmacy_app.common.*
+import com.example.online_pharmacy_app.result.SResult
+import com.example.online_pharmacy_app.viewmodels.CustomerViewModel
+import com.example.online_pharmacy_app.viewmodels.factory.ViewModelFactory
+import com.example.online_pharmacy_app.viewobjects.Customer
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -14,21 +22,29 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_google_sign_in.*
-import android.util.*
-import com.example.online_pharmacy_app.common.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
 private const val TAG = "GoogleSignInActivity"
 
-class GoogleSignInActivity : AppCompatActivity() {
+class GoogleSignInActivity : AppCompatActivity(), KodeinAware {
 
     private val RC_SIGN_IN: Int = 1
+    override val kodein: Kodein by closestKodein()
+    private val factory: ViewModelFactory by instance()
     private lateinit var signInClient: GoogleSignInClient
     private lateinit var signInOptions: GoogleSignInOptions
     private lateinit var auth: FirebaseAuth
+    private lateinit var customerViewModel: CustomerViewModel
+    var accountGlobal: GoogleSignInAccount? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google_sign_in)
+        customerViewModel = ViewModelProvider(this, factory).get(CustomerViewModel::class.java)
         auth = FirebaseAuth.getInstance()
         initializeUI()
         setupGoogleLogin()
@@ -40,10 +56,10 @@ class GoogleSignInActivity : AppCompatActivity() {
         }
     }
 
+
     private fun login() {
         val loginIntent: Intent = signInClient.signInIntent
         startActivityForResult(loginIntent, RC_SIGN_IN)
-
     }
 
 
@@ -54,34 +70,63 @@ class GoogleSignInActivity : AppCompatActivity() {
             try {
                 val account = task.getResult(ApiException::class.java)
                 if (account != null) {
-                  Intent(this,PhoneVerificationActivity::class.java).apply {
-                        this.putExtra(FULLNAME,account.displayName)
-                        this.putExtra(EMAIL,account.email)
-                        this.putExtra(PHOTO, account.photoUrl.toString())
-                        this.putExtra(TOKEN,account.idToken)
-                      this.putExtra(DATE,"2020-01-01")
-                        startActivity(this)
-                    }
                     googleFirebaseAuth(account)
                 }
             } catch (e: ApiException) {
-                Log.e(TAG, "onActivityResult: Exception $e")
                 Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun googleFirebaseAuth(acct: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        Log.e(TAG, "Account info: $acct")
+    private fun googleFirebaseAuth(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        Log.e(TAG, "Account info: $account")
         Log.e(TAG, "Account credentials: $credential")
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
+                accountGlobal = account
+                customerViewModel.isRegisteredCustomer(account.email!!)
+                    .observe(this, Observer(::handleIsRegisteredCustomer))
+
                 Log.e(TAG, "googleFirebaseAuth: onSuccess $it")
-            } else {
-                Log.e(TAG, "googleFirebaseAuth: on failure $it")
-                Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+
+    private fun openPhoneValidation(account: GoogleSignInAccount) {
+        Intent(this, PhoneVerificationActivity::class.java).apply {
+            this.putExtra(FULLNAME, account.displayName)
+            this.putExtra(EMAIL, account.email)
+            this.putExtra(PHOTO, account.photoUrl.toString())
+            this.putExtra(TOKEN, account.idToken)
+            this.putExtra(DATE, "2020-01-01")
+            startActivity(this)
+        }
+    }
+
+
+    private fun handleIsRegisteredCustomer(result: SResult<Customer>) {
+        when (result) {
+            is SResult.Success -> {
+                result.data.let { customer ->
+                    if (customer.email.isNotEmpty()) {
+                        this.startHomeActivity(FRAG_TO_OPEN)
+                    } else {
+                        openPhoneValidation(this.accountGlobal!!)
+                    }
+                }
+            }
+
+            is SResult.Empty -> {
+                Toast.makeText(this, "No response from server", Toast.LENGTH_SHORT).show()
+            }
+
+            is SResult.Error -> {
+                Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
+            }
+
+
         }
     }
 

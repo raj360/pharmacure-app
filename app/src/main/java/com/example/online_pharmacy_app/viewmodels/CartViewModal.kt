@@ -1,6 +1,8 @@
 package com.example.online_pharmacy_app.viewmodels
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.online_pharmacy_app.activities.OnCartChangeResultListeners
 import com.example.online_pharmacy_app.domain.repository.CartRepository
 import kotlinx.coroutines.launch

@@ -9,7 +9,6 @@ import com.example.online_pharmacy_app.R
 import com.example.online_pharmacy_app.activities.ItemListListners.OnAddToCartSearchListItemClickListener
 import com.example.online_pharmacy_app.activities.viewholders.SearchResultDrugViewHolder
 import com.example.online_pharmacy_app.common.startLoginActivity
-import com.example.online_pharmacy_app.databinding.FragmentHomeBinding
 import com.example.online_pharmacy_app.databinding.FragmentSearchesBinding
 import com.example.online_pharmacy_app.result.SResult
 import com.example.online_pharmacy_app.viewmodels.CartViewModal
@@ -18,6 +17,7 @@ import com.example.online_pharmacy_app.viewmodels.factory.ViewModelFactory
 import com.example.online_pharmacy_app.viewobjects.Drug
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
+import kotlinx.android.synthetic.main.fragment_searches.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -27,14 +27,10 @@ import smartadapter.SmartRecyclerAdapter
 import smartadapter.ViewEventId
 
 
-class SearchesFragment : Fragment(R.layout.fragment_searches),OnSearchDrugListener,KodeinAware{
+class SearchesFragment : Fragment(R.layout.fragment_searches), OnSearchDrugListener{
 
-
-
-    override val kodein: Kodein by closestKodein()
-    private val factory: ViewModelFactory by instance()
-    lateinit var drugViewModel: DrugViewModel
-    lateinit var cartViewModal: CartViewModal
+    var drugViewModel: DrugViewModel? =null
+    var cartViewModal: CartViewModal? =null
     private lateinit var binding: FragmentSearchesBinding
     private lateinit var skeleton: Skeleton
     var updateCartListener: OnUpdateCartListener? = null
@@ -42,14 +38,11 @@ class SearchesFragment : Fragment(R.layout.fragment_searches),OnSearchDrugListen
     var QUANTITY = 1
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        drugViewModel = ViewModelProvider(this, factory).get(DrugViewModel::class.java)
+        drugViewModel?.onSearchDrugListener =this
         binding = FragmentSearchesBinding.bind(view)
-         drugViewModel.onSearchDrugListener =this
         initializeSkeleton()
-
     }
 
     private fun initializeSkeleton() {
@@ -60,11 +53,16 @@ class SearchesFragment : Fragment(R.layout.fragment_searches),OnSearchDrugListen
     }
 
 
-    override fun searchProductResult(result: SResult<List<Drug>>) {
+    override fun searchDrugResult(result: SResult<List<Drug>>) {
         when (result) {
             is SResult.Loading -> initializeSkeleton()
             is SResult.Success -> {
                 skeleton.showOriginal()
+                result.data.isEmpty().let {
+                    if(it) showStickerNoResults()
+                    else hideStickerNoResults()
+                }
+
                 SmartRecyclerAdapter
                     .items(result.data)
                     .map(Drug::class, SearchResultDrugViewHolder::class)
@@ -76,10 +74,15 @@ class SearchesFragment : Fragment(R.layout.fragment_searches),OnSearchDrugListen
                         ) {
                             customerId.let { customer ->
                                 if (customer != null) {
-                                    cartViewModal.setAddToCart(QUANTITY, customerId!!, result.data[position].drugID,result.data[position].unitPrice)
+                                    cartViewModal?.setAddToCart(
+                                        QUANTITY,
+                                        customerId!!,
+                                        result.data[position].drugID,
+                                        result.data[position].unitPrice
+                                    )
                                         .also {
-                                        cartViewModal.addToCart()
-                                    }
+                                            cartViewModal?.addToCart()
+                                        }
                                 } else {
                                     this@SearchesFragment.context?.startLoginActivity()
                                 }
@@ -90,11 +93,23 @@ class SearchesFragment : Fragment(R.layout.fragment_searches),OnSearchDrugListen
                     })
                     .into<SmartRecyclerAdapter>(binding.searchResultsRecyclerView)
             }
-            is SResult.Error ->  skeleton.showSkeleton()
-            is SResult.Empty -> skeleton.showSkeleton()
+            is SResult.Error -> {
+                skeleton.showOriginal()
+                showStickerNoResults()
+            }
+            is SResult.Empty -> {
+                skeleton.showOriginal()
+                showStickerNoResults()}
         }
     }
 
+    private fun showStickerNoResults() {
+        constraintLayoutSearchNotFound.visibility = View.VISIBLE
+    }
+
+    private fun hideStickerNoResults() {
+     constraintLayoutSearchNotFound.visibility = View.GONE
+    }
 
 
 }

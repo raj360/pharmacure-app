@@ -6,7 +6,7 @@ import smartadapter.SmartViewHolderType
 import smartadapter.ViewId
 import smartadapter.listener.OnItemClickListener
 
-interface OnIncreaseQuantityClickListener:OnItemClickListener {
+interface OnIncreaseQuantityClickListener : OnItemClickListener {
     override val viewHolderType: SmartViewHolderType
         get() = CartViewHolder::class
 

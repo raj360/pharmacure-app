@@ -16,9 +16,10 @@ class CartViewHolder(parent: ViewGroup) : SmartViewHolder<Cart>(
 
     override fun bind(item: Cart) {
 
+
         itemView.quantityTextView.text = item.quantity.toString()
         itemView.categoryDrugName.text = item.drugName
-        itemView.product_price.text = item.costPrice.toString()
+        itemView.drug_price.text = item.costPrice.toString()
         itemView.productCategory.text = item.caTname
         Glide.with(itemView.categoryDrugImageView).load(item.getImageUrlString())
             .into(itemView.categoryDrugImageView)

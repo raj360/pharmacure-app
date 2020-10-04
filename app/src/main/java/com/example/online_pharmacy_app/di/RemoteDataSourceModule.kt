@@ -8,7 +8,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 
 
-val remoteDataSourceModule = Kodein.Module("remote_data_source_module"){
+val remoteDataSourceModule = Kodein.Module("remote_data_source_module") {
     bind<ICustomerRemoteDataSource>() with singleton { CustomerRemoteDataSource(instance()) }
     bind() from singleton { CustomerRemoteDataSource(instance()) }
 
@@ -16,6 +16,6 @@ val remoteDataSourceModule = Kodein.Module("remote_data_source_module"){
     bind() from singleton { DrugRemoteDataSource(instance()) }
 
     bind<ICartRemoteDataSource>() with singleton { CartRemoteDataSource(instance()) }
-    bind() from singleton { CartRemoteDataSource(instance())}
+    bind() from singleton { CartRemoteDataSource(instance()) }
 
 }

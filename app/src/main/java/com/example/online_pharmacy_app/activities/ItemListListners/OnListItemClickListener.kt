@@ -4,7 +4,7 @@ import smartadapter.SmartViewHolderType
 import smartadapter.listener.OnItemClickListener
 
 
-interface OnListItemClickListener:OnItemClickListener{
+interface OnListItemClickListener : OnItemClickListener {
 
     override val viewHolderType: SmartViewHolderType
         get() = super.viewHolderType

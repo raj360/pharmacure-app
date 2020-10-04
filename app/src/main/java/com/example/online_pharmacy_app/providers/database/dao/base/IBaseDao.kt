@@ -17,5 +17,4 @@ interface IBaseDao<T> {
     fun delete(data: T)
 
 
-
 }

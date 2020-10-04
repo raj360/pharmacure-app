@@ -7,19 +7,18 @@ import com.example.online_pharmacy_app.R
 import com.example.online_pharmacy_app.viewobjects.Drug
 import kotlinx.android.synthetic.main.item_drug_cart.view.*
 import kotlinx.android.synthetic.main.item_drug_cart.view.categoryDrugImageView
-import kotlinx.android.synthetic.main.item_drug_cart.view.categoryDrugName
 import kotlinx.android.synthetic.main.item_drug_list_small_view.view.*
 import smartadapter.viewholder.SmartViewHolder
 
-class SearchResultDrugViewHolder(parent:ViewGroup) :SmartViewHolder<Drug>(
- LayoutInflater.from(parent.context).inflate(R.layout.item_drug_list_small_view,parent,false)
-){
+class SearchResultDrugViewHolder(parent: ViewGroup) : SmartViewHolder<Drug>(
+    LayoutInflater.from(parent.context).inflate(R.layout.item_drug_list_small_view, parent, false)
+) {
 
     override fun bind(item: Drug) {
-        itemView.categoryDrugName.text = item.drugName
-        itemView.categoryDrugPrice.text=item.unitPrice.toString()
-        itemView.categoryDrugDescription.text = item.description
-        itemView.drugCategoryTextView.text = item.subName
+        itemView.catDrugName.text = item.drugName
+        itemView.cateDrugPrice.text = item.unitPrice.toString()
+        itemView.catDrugDescription.text = item.description
+        itemView.catDrugCategory.text = item.subName
         Glide.with(itemView.categoryDrugImageView)
             .load(item.getDrugImageUrl())
             .into(itemView.categoryDrugImageView)

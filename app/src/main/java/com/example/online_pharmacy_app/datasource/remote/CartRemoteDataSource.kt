@@ -32,7 +32,8 @@ class CartRemoteDataSource(private val cartApi: ICartApi) : ICartRemoteDataSourc
         drugID: Int,
         costPrice: Int
     ): SResult<List<Cart>> =
-        when (val result = cartApi.addToCart(quantity, customerID, drugID, costPrice).awaitResult()) {
+        when (val result =
+            cartApi.addToCart(quantity, customerID, drugID, costPrice).awaitResult()) {
             is Result.Ok -> successResult(result.value)
             is Result.Error -> errorResult(result.response.code, result.exception.message())
             is Result.Exception -> {

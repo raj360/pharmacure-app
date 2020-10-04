@@ -6,7 +6,7 @@ import smartadapter.SmartViewHolderType
 import smartadapter.ViewId
 import smartadapter.listener.OnItemClickListener
 
-interface OnAddToCartSearchListItemClickListener:OnItemClickListener {
+interface OnAddToCartSearchListItemClickListener : OnItemClickListener {
     override val viewHolderType: SmartViewHolderType
         get() = SearchResultDrugViewHolder::class
 

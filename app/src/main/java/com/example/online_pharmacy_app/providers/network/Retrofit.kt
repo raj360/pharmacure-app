@@ -19,9 +19,10 @@ import javax.net.ssl.X509TrustManager
 
 
 private val SERVER_ERROR_CODES = listOf(404, 504, 400, 401, 500, 403)
+
 ///-------------- NETWORK CONSTANTS ----////
 const val NETWORK_AVAILABLE_AGE = 60
-const val REQUEST_TIME_OUT  = 60L
+const val REQUEST_TIME_OUT = 60L
 
 fun getUnsafeOkHttpClient(): OkHttpClient.Builder {
     try {
@@ -29,12 +30,16 @@ fun getUnsafeOkHttpClient(): OkHttpClient.Builder {
         return OkHttpClient.Builder().apply {
             val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
                 override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+
                 @SuppressLint("TrustAllX509TrustManager")
                 @Throws(CertificateException::class)
-                override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
+                override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+                }
+
                 @SuppressLint("TrustAllX509TrustManager")
                 @Throws(CertificateException::class)
-                override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {}
+                override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+                }
             })
 
             val sslContext = SSLContext.getInstance("SSL").apply {
@@ -73,11 +78,13 @@ fun createOkHttpClient(): OkHttpClient {
 //           .addQueryParameter("api_key", "723fc8b2e8cc5114380e18c2871b2e5f")
 
 
-        chain.proceed(request.newBuilder()
-            .url(url)
-            .addHeader("Content-type", "application/json")
-             .addHeader("Cache-Control", "public, max-age=$NETWORK_AVAILABLE_AGE")
-            .build())
+        chain.proceed(
+            request.newBuilder()
+                .url(url)
+                .addHeader("Content-type", "application/json")
+                .addHeader("Cache-Control", "public, max-age=$NETWORK_AVAILABLE_AGE")
+                .build()
+        )
     }
 
     httpClient.addNetworkInterceptor { chain ->

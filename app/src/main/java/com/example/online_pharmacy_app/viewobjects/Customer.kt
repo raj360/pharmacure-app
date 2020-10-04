@@ -13,8 +13,8 @@ data class Customer(
     val email: String,
     val token: String?,
     val dateOfBirth: String?
-):IConvertibleTo<Customer>{
-    override fun convertTo()=
+) : IConvertibleTo<Customer> {
+    override fun convertTo() =
         Customer(
             this.customerID,
             this.fullName,

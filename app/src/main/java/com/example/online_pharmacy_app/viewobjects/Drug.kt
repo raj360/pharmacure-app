@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 import com.example.online_pharmacy_app.common.SERVER_URL
 import com.example.online_pharmacy_app.viewobjects.base.IConvertibleTo
 
-
 @Entity
 data class Drug(
     @PrimaryKey
