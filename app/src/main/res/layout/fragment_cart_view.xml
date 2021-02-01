@@ -212,8 +212,8 @@
                                   android:id="@+id/defaultRadioButton"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
-                                  android:text="@string/get_store_location"
-                                  android:visibility="gone" />
+                                  android:text="@string/call_to_order"
+                                 />
                           </RadioGroup>
 
                           <EditText

@@ -6,7 +6,7 @@
 
         <variable
             name="customer"
-            type="com.example.online_pharmacy_app.viewobjects.Customer" />
+            type="com.pharmacure.online_pharmacy_app.viewobjects.Customer" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -18,18 +18,23 @@
             android:layout_height="match_parent"
             android:visibility="visible">
 
-            <androidx.cardview.widget.CardView
+
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints">
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
 
                     <ImageView
                         android:id="@+id/profileImageView"
@@ -39,13 +44,14 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
+                        android:contentDescription="@string/todo"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:scaleType="fitXY"
                         app:layout_constraintBottom_toTopOf="@+id/editProfileTextView"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_person"
+                        app:srcCompat="@mipmap/ic_pharmacure"
                         tools:ignore="VectorDrawableCompat" />
 
 
@@ -214,73 +220,36 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_preferences"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/space_16"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-                <View
-                    android:id="@+id/view19"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/grey_lighter"
-                    tools:ignore="MissingConstraints" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewPreferences"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adViewBanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:adSize="SMART_BANNER"
+                    app:adUnitId="@string/BANNER_ONE_UNIT_ID"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="@dimen/space_8"
-                        android:layout_marginBottom="4dp"
-                        android:text="@string/resent_orders"
-                        android:textAppearance="@style/categories"
-                        android:textSize="@dimen/font_title_size"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/skeletonAccounts"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-
-                    <com.faltenreich.skeletonlayout.SkeletonLayout
-                        android:id="@+id/skeletonAccounts"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_32"
-                        tools:ignore="MissingConstraints">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerviewOtherDrugLists"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="2dp"
-                            android:layout_marginTop="@dimen/space_4"
-                            android:layout_marginEnd="2dp"
-                            android:clipToPadding="false"
-                            android:paddingBottom="@dimen/space_16"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="32dp" />
-
-
-
-                    </com.faltenreich.skeletonlayout.SkeletonLayout>
-
-                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

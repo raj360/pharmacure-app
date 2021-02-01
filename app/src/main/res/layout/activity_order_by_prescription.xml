@@ -1,0 +1,248 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pharmacure.online_pharmacy_app.viewobjects.Drug" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinateLayoutDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fillViewport="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:id="@+id/prescriptionImageView"
+                                android:layout_width="0dp"
+                                android:layout_height="400dp"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:src="@drawable/default_image"
+                                android:contentDescription="TODO" />
+
+                            <ImageButton
+                                android:id="@+id/backButtonPrescriptionImageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/round_shape_blurred_background"
+                                android:backgroundTint="@color/grey_lighter"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:src="@drawable/ic_baseline_arrow_back_24"
+                                android:tint="@color/white"
+                                app:layout_constraintCircleRadius="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/policyCardView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:ignore="MissingConstraints"
+                                tools:layout_editor_absoluteX="16dp"
+                                tools:layout_editor_absoluteY="1883dp" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/firstCardView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="420dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/drugNameTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="16dp"
+                                        android:padding="5dp"
+                                        android:text="@string/order_by_prescription"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/text__primary_dark"
+                                        android:textSize="20sp"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <RatingBar
+                                        android:id="@+id/ratingBar"
+                                        style="@style/Widget.AppCompat.RatingBar.Small"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:numStars="5"
+                                        android:visibility="gone"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/drugNameTextView" />
+
+                                    <TextView
+                                        android:id="@+id/categoryTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/order_infor"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/grey_lighter"
+                                        android:textSize="@dimen/font_h7_size"
+                                        app:layout_constraintEnd_toStartOf="@+id/featureIconImageView"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/drugDescriptionTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="24dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:visibility="gone"
+                                        android:ellipsize="end"
+                                        android:lineSpacingExtra="8sp"
+                                        android:text="@{item.description}"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/font_title_size"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/categoryTextView"
+                                        tools:text="Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state." />
+
+                                    <View
+                                        android:id="@+id/view18"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/grey_lighter"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/drugDescriptionTextView" />
+
+
+                                    <Button
+                                        android:id="@+id/orderByPrescriptionButton"
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:backgroundTint="@color/colorPrimary"
+                                        android:text="@string/upload"
+                                        android:textColor="@color/white"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.5"
+                                        app:layout_constraintStart_toEndOf="@+id/captureImageButton"
+                                        app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+
+                                    <Button
+                                        android:id="@+id/captureImageButton"
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:backgroundTint="@color/white"
+                                        android:text="@string/capture_image"
+                                        android:textColor="@color/colorPrimary"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toStartOf="@+id/orderByPrescriptionButton"
+                                        app:layout_constraintHorizontal_bias="0.5"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+
+                                    <TextView
+                                        android:id="@+id/featureIconImageView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:visibility="gone"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginEnd="4dp"
+                                        android:text="@string/price_ugx"
+                                        android:textColor="@color/colorPrimary"
+                                        app:layout_constraintBottom_toBottomOf="@+id/categoryTextView"
+                                        app:layout_constraintEnd_toStartOf="@+id/drugUnitPriceTextView"
+                                        app:layout_constraintStart_toEndOf="@+id/categoryTextView"
+                                        app:layout_constraintTop_toTopOf="@+id/categoryTextView" />
+
+                                    <TextView
+                                        android:id="@+id/drugUnitPriceTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="16dp"
+                                        android:visibility="gone"
+                                        android:text="@{item.unitPrice}"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12sp"
+                                        app:layout_constraintBottom_toBottomOf="@+id/featureIconImageView"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="@+id/featureIconImageView"
+                                        tools:ignore="MissingConstraints"
+                                        tools:text="11000" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.core.widget.NestedScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.online_pharmacy_app">
+    package="com.pharmacure.online_pharmacy_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -9,19 +9,30 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
+        android:name="android.permission.CAMERA"
+        android:required="true"
+        android:requiredFeature="true"
+        tools:targetApi="o" />
+    <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+        android:hasCode="true"
+        android:maxSdkVersion="18"
+        tools:replace="android:hasCode" />
 
     <application
         android:name=".PharmacureApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_pharmacure"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_pharmacure"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".activities.auth.SignUpActivity" android:parentActivityName=".activities.auth.LoginActivity" />
+        <activity android:name=".activities.auth.LoginActivity" android:parentActivityName=".activities.base.BaseBottomNavigationActivity" />
+        <activity android:name=".activities.OrderByPrescriptionActivity" />
+        <activity android:name=".activities.OrderItemDetailsActivity" />
         <activity
             android:name=".activities.DrugDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -41,13 +52,20 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.SplashScreen"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/App_ID" />
     </application>
 
 </manifest>

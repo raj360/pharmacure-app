@@ -1,0 +1,295 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.pharmacure.online_pharmacy_app.viewobjects.OrderItem" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinateLayoutDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fillViewport="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+<!--                            <com.github.islamkhsh.CardSliderViewPager-->
+<!--                                android:id="@+id/viewPager"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="300dp"-->
+<!--                                android:layout_marginTop="24dp"-->
+<!--                                app:auto_slide_time="3"-->
+<!--                                app:cardSlider_otherPagesWidth="24dp"-->
+<!--                                app:cardSlider_pageMargin="12dp"-->
+<!--                                app:cardSlider_smallScaleFactor="0.9"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+                            <!--                            <ImageView-->
+                            <!--                                android:id="@+id/drugCoverImageView"-->
+                            <!--                                android:layout_width="0dp"-->
+                            <!--                                android:layout_height="300dp"-->
+                            <!--                                android:scaleType="fitXY"-->
+                            <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--                                app:layout_constraintStart_toStartOf="parent"-->
+                            <!--                                app:layout_constraintTop_toTopOf="parent"-->
+                            <!--                                tools:srcCompat="@drawable/default_image" />-->
+
+                            <ImageButton
+                                android:id="@+id/backButtonImageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/round_shape_blurred_background"
+                                android:backgroundTint="@color/grey_lighter"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:src="@drawable/ic_baseline_arrow_back_24"
+                                android:tint="@color/white"
+                                app:layout_constraintCircleRadius="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/policyCardView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:ignore="MissingConstraints"
+                                tools:layout_editor_absoluteX="16dp"
+                                tools:layout_editor_absoluteY="1883dp" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/firstCardView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="350dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/tefRefTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="16dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:padding="5dp"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/text__primary_dark"
+                                        android:textSize="20sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="Item name" />
+
+                                    <RatingBar
+                                        android:id="@+id/ratingBar"
+                                        style="@style/Widget.AppCompat.RatingBar.Small"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:numStars="5"
+                                        android:visibility="gone"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tefRefTextView" />
+
+                                    <TextView
+                                        android:visibility="invisible"
+                                        android:id="@+id/categoryTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/grey_lighter"
+                                        android:textSize="@dimen/font_small_size"
+                                        app:layout_constraintEnd_toStartOf="@+id/featureIconImageView"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                                        tools:text="Category" />
+
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:id="@+id/drugDescriptionTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="24dp"
+                                        android:layout_marginEnd="16dp"
+                                        android:ellipsize="end"
+                                        android:lineSpacingExtra="8sp"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/font_title_size"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/categoryTextView"
+                                        tools:text="Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state.Singapore,an island city state." />
+
+                                    <View
+                                        android:id="@+id/view18"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="10dp"
+                                        android:background="@color/grey_lighter"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/drugDescriptionTextView" />
+
+
+                                    <Button
+                                        android:visibility="gone"
+                                        android:id="@+id/viewCartButton"
+                                        android:layout_width="0dp"
+                                        android:layout_height="45dp"
+                                        android:backgroundTint="@color/colorPrimary"
+                                        android:text="@string/view_cart"
+                                        android:textColor="@color/white"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.5"
+                                        app:layout_constraintStart_toEndOf="@+id/addToCartDetailsButton"
+                                        app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+
+
+
+
+                                    <TextView
+                                        android:visibility="invisible"
+                                        android:id="@+id/featureIconImageView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20dp"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginEnd="4dp"
+                                        android:text="@string/price_ugx"
+                                        android:textColor="@color/colorPrimary"
+                                        app:layout_constraintBottom_toBottomOf="@+id/categoryTextView"
+                                        app:layout_constraintEnd_toStartOf="@+id/drugUnitPriceTextView"
+                                        app:layout_constraintStart_toEndOf="@+id/categoryTextView"
+                                        app:layout_constraintTop_toTopOf="@+id/categoryTextView" />
+
+                                    <TextView
+                                        android:visibility="invisible"
+                                        android:id="@+id/drugUnitPriceTextView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="16dp"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12sp"
+                                        app:layout_constraintBottom_toBottomOf="@+id/featureIconImageView"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="@+id/featureIconImageView"
+                                        tools:ignore="MissingConstraints"
+                                        tools:text="11000" />
+
+
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/addToCartDetailsButton"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintHorizontal_bias="1"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/view18"
+                                        >
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/allCartItemsRecyclerView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:overScrollMode="never"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <ProgressBar
+                                android:id="@+id/progressBarDrugDetailsScreen"
+                                style="?android:attr/progressBarStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:progressTint="@color/colorPrimary"
+                                android:visibility="invisible"
+                                app:layout_constraintBottom_toBottomOf="@+id/firstCardView"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                              />
+
+
+
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.core.widget.NestedScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

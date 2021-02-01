@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".activities.base.home.HomeFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/itemsswipetorefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+    >
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,9 +21,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardOne"
@@ -53,7 +62,7 @@
 
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/orderByPrescriptionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -81,6 +90,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardOne">
+
 
                 <TextView
                     android:id="@+id/categories"
@@ -133,7 +143,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Supplements"
+                            android:text="@string/supplements"
                             android:textAlignment="center"
                             android:textAppearance="@style/categories_label"
                             app:layout_constraintEnd_toStartOf="@+id/textView4"
@@ -158,7 +168,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:text="OTP  medication"
+                            android:text="@string/otp_medication"
                             android:textAlignment="center"
                             android:textAppearance="@style/categories_label"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -185,7 +195,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Herbals"
+                            android:text="@string/herbals"
                             android:textAlignment="center"
                             android:textAppearance="@style/categories_label"
                             app:layout_constraintEnd_toStartOf="@+id/textView5"
@@ -212,7 +222,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Causticuticals"
+                            android:text="@string/cosmeceuticals"
                             android:textAlignment="center"
                             android:textAppearance="@style/categories_label"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -238,7 +248,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:text="Prescription  only medicines"
+                            android:text="@string/prescription_only_medicines"
                             android:textAppearance="@style/categories_label"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/textView7"
@@ -262,7 +272,7 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:text="National Drug Register"
+                            android:text="@string/national_drug_register"
                             android:textAlignment="center"
                             android:textAppearance="@style/categories_label"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -321,6 +331,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewDrugsHome"
+                            android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="2dp"
@@ -328,7 +339,6 @@
                             android:layout_marginEnd="2dp"
                             android:clipToPadding="false"
                             android:paddingBottom="@dimen/space_16"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             tools:layout_editor_absoluteY="32dp" />
@@ -345,6 +355,7 @@
 
 
     </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

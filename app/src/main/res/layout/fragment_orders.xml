@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/out_of_order"
+                android:src="@drawable/no_result_found"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
 
 
     <com.faltenreich.skeletonlayout.SkeletonLayout
-        android:id="@+id/skeletonHome"
+        android:id="@+id/skeletonOrdersPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"

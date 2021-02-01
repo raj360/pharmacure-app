@@ -15,11 +15,12 @@
 
 
     <ImageView
-        android:id="@+id/hotlist_bell"
+        android:id="@+id/cartIconHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
         android:gravity="center"
+        android:visibility="visible"
         android:src="@drawable/ic_shopping_cart_image" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,9 +32,9 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/round_shape"
         android:gravity="center"
+        android:visibility="invisible"
         android:minWidth="17sp"
         android:minHeight="15sp"
-        android:text="@string/_0"
         android:textColor="#ffffffff"
         android:textSize="12sp"
         tools:ignore="RedundantNamespace" />
@@ -42,6 +43,7 @@
         android:layout_margin="0dp"
         android:id="@+id/progressBarCart"
         style="?android:attr/progressBarStyle"
+        android:indeterminateTint="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />

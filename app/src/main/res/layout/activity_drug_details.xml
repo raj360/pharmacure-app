@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.example.online_pharmacy_app.viewobjects.Drug" />
+            type="com.pharmacure.online_pharmacy_app.viewobjects.Drug" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -248,6 +248,9 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="@+id/drugCoverImageView" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
                     </androidx.core.widget.NestedScrollView>
 

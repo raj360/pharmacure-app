@@ -1,23 +1,20 @@
 <resources>
     <string name="app_name">Pharmacure</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
-
+    <string name="app__app_name">Pharmacure</string>
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="orders">Orders</string>
-    <string name="contact_us">Contact Us</string>
     <string name="account">Account</string>
+    <string name="login_email_or_telephone">Email</string>
+    <string name="login__email">Email</string>
+    <string name="login__password">password</string>
+    <string name="login__login">Login</string>
+    <string name="login__choice_text">OR</string>
+    <string name="image_default__image">Default Image</string>
+    <string name="login__forgot_your_password">FORGOT PASSWORD</string>
+    <string name="login__not_a_member_join_now">SIGN UP</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="web_client_secret">GtFiMClVMa4T6UrI09IGsgMC</string>
-    <string name="web_client_key">AIzaSyA4TJA1qwtEsYvJ7nKrCeJJp44b2aeQ4vg</string>
     <string name="create_account_using_google">Create account using Google</string>
     <string name="verify_phone_number">Verify Phone Number</string>
     <string name="_787292442">787292442</string>
@@ -29,25 +26,18 @@
     <string name="sample_description">This is the product detail summary which describes a particular medicine</string>
     <string name="profile__edit">Edit</string>
     <string name="sign_out">Sign out</string>
-    <string name="other_drugs">Other drugs</string>
     <string name="quantity">Quantity</string>
     <string name="exit">Exit</string>
     <string name="order_now">Order now</string>
     <string name="choose_payment_method">Choose payment method</string>
     <string name="pay_using_mobile_money">Pay using mobile money</string>
     <string name="pay_on_delivery">Pay on delivery</string>
-    <string name="get_store_location">Get store location</string>
     <string name="location">Location</string>
     <string name="total_amount">Total amount</string>
     <string name="sale_price">sale cost</string>
     <string name="delivery_cost">Delivery cost</string>
     <string name="_10">10</string>
     <string name="title_activity_category_switcher">CategorySwitcherActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-
-
-    <string name="contact_form">Contact Us</string>
 
 
     <string name="contact_form_name">Your Name</string>
@@ -65,12 +55,37 @@
     <string name="contact_form_button">Send Message</string>
 
 
-    <string name="contact_form_post_message">Please wait! We\'re sending your message to the support department…</string>
-
-
-    <string name="contact_posted">Your message has been successfully delivered.</string>
     <string name="call_to_order">Call To Order</string>
     <string name="view_cart">View Cart</string>
     <string name="_0">0</string>
-    <string name="resent_orders">Resent Orders</string>
+    <string name="order_date">2020–10–25T16:58:53.000Z</string>
+    <string name="order_status">PAID</string>
+    <string name="payment_method">MOBILE_MONEY</string>
+    <string name="_8lso392lldlild39ddl3do34">8lso392lldlILD39ddl3do34</string>
+    <string name="no_acount_not">You don\'t have an account Yet!!!</string>
+    <string name="todo">TODO</string>
+    <string name="order_infor">Take a photo of your prescription and send to complete order</string>
+    <string name="order_by_prescription">Order By Prescription</string>
+    <string name="upload">upload</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="register__user_telephone">Telephone</string>
+    <string name="register__email">Email</string>
+    <string name="register__password">password</string>
+    <string name="register__register">Register</string>
+    <string name="register__back_to_login">Already registered? Login</string>
+    <string name="register__first_name">First name</string>
+    <string name="register_last_name">Last name</string>
+
+
+
+
+    <string name="App_ID">ca-app-pub-3474043040187258~6777426106</string>
+    <string name="BANNER_ONE_UNIT_ID">ca-app-pub-3474043040187258/7906180100</string>
+    <string name="LOGIN_UNIT">ca-app-pub-3474043040187258/6058745961</string>
+    <string name="cosmeceuticals">Cosmeceuticals</string>
+    <string name="supplements">Supplements</string>
+    <string name="herbals">Herbals</string>
+    <string name="otp_medication">OTP medication</string>
+    <string name="prescription_only_medicines">Prescription only medicines</string>
+    <string name="national_drug_register">National Drug Register</string>
 </resources>

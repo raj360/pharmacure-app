@@ -7,6 +7,34 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ProgressBarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+
+    <style name="RaveViewTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="OTPButtonStyle">@style/otpBtnStyle2</item>
+        <item name="PayButtonStyle">@style/ravePayBtnStyle</item>
+        <item name="OTPHeaderStyle">@style/otpHeaderStyle2</item>
+        <item name="TabLayoutStyle">@style/tabLayoutStyle2</item>
+        <item name="PinHeaderStyle">@style/pinHeaderStyle2</item>
+<!--        <item name="PaymentTileStyle">@style/myPaymentTileStyle</item>-->
+<!--        <item name="PaymentTileTextStyle">@style/myPaymentTileTextStyle</item>-->
+<!--        <item name="PaymentTileDividerStyle">@style/myPaymentTileDividerStyle</item>-->
+    </style>
+
+    <style name="ravePayBtnStyle" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/buttonbackground</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

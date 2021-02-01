@@ -1,0 +1,15 @@
+package com.pharmacure.online_pharmacy_app.activities.ItemListListners
+
+import com.pharmacure.online_pharmacy_app.R
+import com.pharmacure.online_pharmacy_app.activities.viewholders.CartViewHolder
+import smartadapter.SmartViewHolderType
+import smartadapter.ViewId
+import smartadapter.listener.OnItemClickListener
+
+interface OnIncreaseQuantityClickListener : OnItemClickListener {
+    override val viewHolderType: SmartViewHolderType
+        get() = CartViewHolder::class
+
+    override val viewId: ViewId
+        get() = R.id.increaseQuantityButton
+}

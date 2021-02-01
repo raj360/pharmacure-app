@@ -9,6 +9,7 @@
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drug_item_gridView_constraint_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -47,6 +48,7 @@
             android:textAlignment="viewStart"
             android:textColor="#000000"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView12"
@@ -96,7 +98,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/drugName"
             tools:text="@string/sample_description" />
-        <!--        rateByServer="@{item.ratingDetails.totalRatingValue}"-->
+
 
         <ImageButton
             android:id="@+id/addToCartButton"
@@ -109,7 +111,6 @@
             app:layout_constraintTop_toBottomOf="@+id/drugDescription"
             app:srcCompat="@drawable/ic_add_to_cart" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </com.google.android.material.card.MaterialCardView>
 

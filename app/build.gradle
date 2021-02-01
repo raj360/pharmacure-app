@@ -7,35 +7,55 @@ def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
-    compileSdkVersion 29
+//Go to this LINK https://support.google.com/googleplay/android-developer/contact/otherbugs
+//    signingConfigs {
+////        release {
+////            storeFile file('/Users/gatto/.android/debug.keystore')
+////            keyAlias 'key0'
+////            storePassword 'ray@KAL20'
+////            keyPassword 'sodium44'
+////        }
+//    }
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError true
+    }
+
+    compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.online_pharmacy_app"
+        applicationId "com.pharmacure.online_pharmacy_app"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 30
+        versionCode 16
+        versionName "2.4.0"
+        consumerProguardFiles 'proguard-rules.pro'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // Easy pay credentials
         buildConfigField("String", "SECRET", apikeyProperties['SECRET'])
         buildConfigField("String", "CLIENT_ID", apikeyProperties['CLIENT_ID'])
+        buildConfigField("String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY'])
+        buildConfigField("String", "SECRETE_KEY", apikeyProperties['SECRETE_KEY'])
+        buildConfigField("String", "ENCRYPTION_KEY", apikeyProperties['ENCRYPTION_KEY'])
+        buildConfigField("String","SERVER_URL",apikeyProperties['SERVER_URL'])
+        buildConfigField("String","LOCAL_SERVER",apikeyProperties['LOCAL_SERVER'])
+//        signingConfig signingConfigs.release
     }
-
-
-
-
-
-
-
 
     buildTypes {
         release {
-            minifyEnabled false
+//            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
+            matchingFallbacks = ['']
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,80 +69,100 @@ android {
         dataBinding true
         viewBinding true
     }
+    buildToolsVersion '29.0.2'
+    dependenciesInfo {
+        includeInApk true
+        includeInBundle false
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.10"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+   // implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
 
 
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    //---- flutter wave api keys
+//    implementation 'com.github.Flutterwave.rave-android:rave_presentation:2.0.9'
 
-    // ---firebase sdk for google analytics
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.github.Flutterwave.rave-android:rave_android:2.0.9'
+
+    //----firebase sdk for google analytics
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
-    implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
 
 
-    // ---phone picker country code
+    //----phone picker country code
     implementation 'com.github.joielechong:countrycodepicker:2.4.1'
 
     // ----glide
     implementation "com.github.bumptech.glide:glide:4.11.0"
 
-    // --- multidex
+    // -----multidex
     implementation 'com.android.support:multidex:1.0.3'
 
+//    def multidex_version = "2.0.1"
+//    implementation 'androidx.multidex:multidex:$multidex_version'
 
-    //LIVE DATA
+
+    //-----LIVE DATA
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}"
 
 
-    //alternately - if using Java8, use the following instead of lifecycle-compiler
+    //-----alternately - if using Java8, use the following instead of lifecycle-compiler
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
 
-
-    //ROOM DB
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    implementation "androidx.room:room-ktx:2.2.5"
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'androidx.gridlayout:gridlayout:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    kapt "android.arch.persistence.room:compiler:1.1.1"
+    //-----ROOM DB
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
 
-    //SKELETON
+    //-----SKELETON
     implementation 'com.faltenreich:skeletonlayout:2.0.2'
 
 
-    //DI
-    implementation "org.kodein.di:kodein-di-generic-jvm:$kodeinVersion6"
-    implementation "org.kodein.di:kodein-di-framework-android-core:$kodeinVersion6"
-    implementation "org.kodein.di:kodein-di-framework-android-x:$kodeinVersion6"
+    //-----DI
+    implementation("org.kodein.di:kodein-di:$kodeinVersion6")
+    implementation("org.kodein.di:kodein-di-framework-android-x:$kodeinVersion6")
 
 
-    //HTTP
+
+//    implementation "org.kodein.di:kodein-di-generic-jvm:$kodeinVersion6"
+//    implementation "org.kodein.di:kodein-di-framework-android-core:$kodeinVersion6"
+//    implementation "org.kodein.di:kodein-di-framework-android-x:$kodeinVersion6"
+
+
+    //-----HTTP
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "ru.gildor.coroutines:kotlin-coroutines-retrofit:$retrofitCoroutinesVersion"
@@ -130,32 +170,47 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
 
+    //-- swipe-reflesh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
-    //COROUTINES MANAGER
+    //-----COROUTINES MANAGER
     implementation "com.rasalexman.coroutinesmanager:coroutinesmanager:$coroutinesManagerVersion"
 
-    //Smart recyclerview adapter
+    //-----SMART RECYCLER VIEW ADAPTER
     implementation "io.github.manneohlund:smart-recycler-adapter:$smartAdapterVersion"
 
 
-    //SearchLiveo
+    //-----SearchLiveo
     implementation 'com.github.rudsonlive:searchliveo:1.1.2'
 
-    //Pin Entry
+    //-----Pin Entry
     implementation 'com.poovam:pin-edittext-field:1.2.3'
 
-    //No Internet dialog
+    //-----No Internet dialog
     implementation 'com.github.ImaginativeShohag:Oops-No-Internet:v1.1.5'
 
-
-    //EasyPay
-    implementation "com.github.wagaana:EasyPay-API:$easyPay"
-
-    //Testing librareis
-    testImplementation 'junit:junit:4.13'
+    //-----Testing libraries
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+//    //-----CardSlider
+//    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
+
+    //-----InlineActivityResult ImageCapture
+    implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
+
+
+    //----Google Add_mob
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+
+
+    //-----Firebaser Crashlystics and Analystics librareis
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
 
+
 apply plugin: 'com.google.gms.google-services'
+//
+apply plugin: 'com.google.firebase.crashlytics'
