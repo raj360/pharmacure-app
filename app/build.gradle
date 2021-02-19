@@ -27,8 +27,8 @@ android {
         applicationId "com.pharmacure.online_pharmacy_app"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 16
-        versionName "2.4.0"
+        versionCode 17
+        versionName "2.5.0"
         consumerProguardFiles 'proguard-rules.pro'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -200,10 +200,8 @@ dependencies {
     //-----InlineActivityResult ImageCapture
     implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
 
-
     //----Google Add_mob
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
-
 
     //-----Firebaser Crashlystics and Analystics librareis
     implementation 'com.google.firebase:firebase-crashlytics-ktx'

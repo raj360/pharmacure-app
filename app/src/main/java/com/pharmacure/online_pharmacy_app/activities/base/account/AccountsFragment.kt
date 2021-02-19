@@ -11,7 +11,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.auth.FirebaseAuth
 import com.pharmacure.online_pharmacy_app.R
-import com.pharmacure.online_pharmacy_app.activities.auth.GoogleSignInActivity
+import com.pharmacure.online_pharmacy_app.activities.auth.LoginActivity
 import com.pharmacure.online_pharmacy_app.common.FRAG_TO_OPEN
 import com.pharmacure.online_pharmacy_app.common.startHomeActivity
 import com.pharmacure.online_pharmacy_app.viewmodels.CustomerViewModel
@@ -62,7 +62,6 @@ class AccountsFragment : Fragment(R.layout.fragment_accounts), DIAware {
 
     }
 
-
     private fun loadCustomerData(customer: Customer?) {
 
         if (customer == null) {
@@ -71,12 +70,11 @@ class AccountsFragment : Fragment(R.layout.fragment_accounts), DIAware {
             emailTextView.visibility = View.GONE
             editProfileTextView.visibility = View.INVISIBLE
             signOutTextView.visibility = View.INVISIBLE
-            startActivity(Intent(context, GoogleSignInActivity::class.java))
+            startActivity(Intent(context, LoginActivity::class.java))
         } else {
             customerNameTextView.text = customer.fullName
             phoneTextView.text = customer.telephone
             emailTextView.text = customer.email
-
 
         }
 
