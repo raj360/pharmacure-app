@@ -42,10 +42,14 @@ import org.kodein.di.android.di
 import org.kodein.di.instance
 
 
-class BaseBottomNavigationActivity : AppCompatActivity(), OnCartChangeResultListeners,
-    OnUpdateCartListener, DIAware, SearchView.OnQueryTextListener, OnShowSnackBarListeners {
-
-
+class BaseBottomNavigationActivity : AppCompatActivity(),
+    OnCartChangeResultListeners,
+    OnUpdateCartListener,
+    DIAware,
+    SearchView.OnQueryTextListener,
+    OnShowSnackBarListeners
+{
+    
     private var txtViewCount: TextView? = null
 
     private var cartImage: ImageView? = null

@@ -7,15 +7,7 @@ def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
-//Go to this LINK https://support.google.com/googleplay/android-developer/contact/otherbugs
-//    signingConfigs {
-////        release {
-////            storeFile file('/Users/gatto/.android/debug.keystore')
-////            keyAlias 'key0'
-////            storePassword 'ray@KAL20'
-////            keyPassword 'sodium44'
-////        }
-//    }
+
     lintOptions {
         checkReleaseBuilds true
         abortOnError true
@@ -196,6 +188,7 @@ dependencies {
 
 //    //-----CardSlider
 //    implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
+
 
     //-----InlineActivityResult ImageCapture
     implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'

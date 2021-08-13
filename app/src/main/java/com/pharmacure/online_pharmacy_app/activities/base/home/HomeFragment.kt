@@ -34,7 +34,6 @@ import com.pharmacure.online_pharmacy_app.viewmodels.DrugViewModel
 import com.pharmacure.online_pharmacy_app.viewmodels.factory.ViewModelFactory
 import com.pharmacure.online_pharmacy_app.viewobjects.Cart
 import com.pharmacure.online_pharmacy_app.viewobjects.Drug
-import kotlinx.android.synthetic.main.fragment_home.*
 import org.kodein.di.DI
 import org.kodein.di.DIAware
 import org.kodein.di.android.x.di

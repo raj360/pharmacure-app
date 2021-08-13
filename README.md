@@ -26,8 +26,7 @@
    
    ### search view
    ![Alt text](screen-shots/skeleton_on_search.jpg?raw=true "Optional Title")
-      
-  
+
   ### Dashboards home
    ![Alt text](screen-shots/dashboard_view.png?raw=true "Optional Title")
    

@@ -61,5 +61,14 @@ class PharmacureApplication : Application(), DIAware {
         FirebaseApp.initializeApp(this)
     }
 
+    
+
+
+
+
+
+
+
+
 }
 
