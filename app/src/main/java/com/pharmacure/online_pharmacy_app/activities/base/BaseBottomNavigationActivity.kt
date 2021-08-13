@@ -283,8 +283,7 @@ class BaseBottomNavigationActivity : AppCompatActivity(),
                 pleaseTurnOffText = "Please turn off" // Optional
                 airplaneModeOffButtonText = "Airplane mode" // Optional
                 showAirplaneModeOffButtons = true // Optional
-            }
-            .build()
+            }.build()
 
         this.openFragment = intent.getStringExtra(FRAG_TO_OPEN)
         initializeFragments(openFragment)
@@ -297,6 +296,7 @@ class BaseBottomNavigationActivity : AppCompatActivity(),
     }
 
     override fun handleCartResult(result: SResult<List<Cart>>) {
+
         when (result) {
             is SResult.Loading -> {
                 showCartProgress()

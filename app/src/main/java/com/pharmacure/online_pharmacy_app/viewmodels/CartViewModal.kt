@@ -8,7 +8,6 @@ import com.pharmacure.online_pharmacy_app.domain.repository.CartRepository
 import com.pharmacure.online_pharmacy_app.result.loading
 import kotlinx.coroutines.launch
 
-
 class CartViewModal(
     private val repository: CartRepository
 ) : ViewModel() {
