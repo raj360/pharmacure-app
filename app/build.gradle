@@ -19,7 +19,7 @@ android {
         applicationId "com.pharmacure.online_pharmacy_app"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 17
+        versionCode 18
         versionName "2.5.0"
         consumerProguardFiles 'proguard-rules.pro'
         multiDexEnabled true
