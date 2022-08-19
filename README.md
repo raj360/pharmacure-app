@@ -3,7 +3,7 @@
 ## Description
  - Pharmacure is an online pharmacy that allows various customers/ Patients to order medicine from all over Uganda.
    Back-end is developed with Node Js and Express, Mysql database management system, ReactJS is used to create dashboards, the Application is a Native-android application developed using Kotlin based on the MVVM design pattern.
-   https://play.google.com/store/apps/details? id=com.pharmacure.online_pharmacy_app
+   https://apkpure.com/pharmacure/com.pharmacure.online_pharmacy_app
 
 
  # Languages, technologies android frameworks
