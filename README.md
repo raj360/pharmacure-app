@@ -1,4 +1,4 @@
-#Talents promotion application
+#Pharmacure app
 
 ## Description
  - Pharmacure is an online pharmacy that allows various customers/ Patients to order medicine from all over Uganda.
