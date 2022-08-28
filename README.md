@@ -9,7 +9,7 @@
  # Languages, technologies android frameworks
    - Kotlin
    - MVVM
-   - Rooom Database
+   - Room Database
    - FTS4 
    
    ### home screen
