@@ -31,7 +31,7 @@ class PharmacureApplication : Application(), DIAware {
                         db.execSQL("INSERT INTO  DrugFts(DrugFts) VALUES ('rebuild')")
                     }
                 })
-                .allowMainThreadQueries()
+//                 .allowMainThreadQueries()
                 .build()
         }
         import(networkModule, allowOverride = true)
